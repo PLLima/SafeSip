@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "safe sip"
+rootProject.name = "SafeSip"
 include(":app")
  
