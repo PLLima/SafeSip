@@ -39,6 +39,7 @@ public class PersonalInformation extends AppCompatActivity {
         editAge = findViewById(R.id.EditTextAge);
         editHeight = findViewById(R.id.EditTextHeight);
         editWeight = findViewById(R.id.EditTextWeight);
+        btnSave = findViewById(R.id.RadioGroupSex);
 
         loadData();
 
@@ -99,7 +100,7 @@ public class PersonalInformation extends AppCompatActivity {
         }
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("name", name);
+        editor.putString("username", name);
         editor.putInt("age", age);
         editor.putFloat("height", height);
         editor.putFloat("weight", weight);
