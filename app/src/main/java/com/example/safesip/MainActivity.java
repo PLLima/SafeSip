@@ -12,22 +12,27 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Button WelcomeButton;
+        Button welcomeButton;
+        String PERSONAL_DATA_FILE = "personal-data";
+        String PERSONAL_DATA_SET_KEY = "personal-data-set";
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        WelcomeButton = findViewById(R.id.WelcomeButton);
+        welcomeButton = findViewById(R.id.WelcomeButton);
 
-
-        SharedPreferences prefs = getSharedPreferences("safe sip", MODE_PRIVATE);
-        boolean hasData = prefs.getBoolean("hasData", false);
-        if (hasData) {
-            Intent intent = new Intent(getApplicationContext(), ActionActivity.class);
-            startActivity(intent);
-            finish();
+        SharedPreferences prefs = getSharedPreferences(PERSONAL_DATA_FILE, MODE_PRIVATE);
+        boolean hasPersonalData = prefs.getBoolean(PERSONAL_DATA_SET_KEY, false);
+        if (hasPersonalData) {
+            welcomeButton.setText("Start");
+            welcomeButton.setOnClickListener(v -> {
+                Intent intent = new Intent(getApplicationContext(), ActionActivity.class);
+                startActivity(intent);
+            });
         } else {
-            WelcomeButton.setOnClickListener(v -> {
+            welcomeButton.setText("Sign up");
+            welcomeButton.setOnClickListener(v -> {
                 Intent newActivity = new Intent(getApplicationContext(), PersonalInformation.class);
                 startActivity(newActivity);
             });
