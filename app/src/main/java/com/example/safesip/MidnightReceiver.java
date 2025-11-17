@@ -51,6 +51,8 @@ public class MidnightReceiver extends BroadcastReceiver {
             strike = 0;
         }
         editor.putString("strike", String.valueOf(strike));
+        editor.putString("times", "");
+        editor.putString("alcool", "");
         editor.apply();
         MidnightScheduler.scheduleNextMidnight(context);
     }
