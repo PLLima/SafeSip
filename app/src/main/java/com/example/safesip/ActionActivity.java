@@ -1,6 +1,9 @@
 package com.example.safesip;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +12,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class ActionActivity extends AppCompatActivity {
+
+    private TextView StreakText;
+    private Button TrackButton;
+    private Button HistoryButton;
+    private Button StatisticsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +28,14 @@ public class ActionActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        StreakText = findViewById(R.id.StreakText);
+        TrackButton = findViewById(R.id.TrackButton);
+        HistoryButton = findViewById(R.id.HistoryButton);
+        StatisticsButton = findViewById(R.id.StatisticsButton);
+    }
+
+    public void handleClick(View view) {
+
     }
 }
