@@ -1,33 +1,38 @@
 package com.example.safesip;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
+import android.widget.Toast;
 
 public class PersonalInformation extends AppCompatActivity {
+    private String PERSONAL_DATA_SET_KEY;
+    private String USERNAME_KEY;
+    private String AGE_KEY;
+    private String SEX_KEY;
+    private String WEIGHT_KEY;
     private SharedPreferences sharedPreferences;
     private EditText editUsername;
     private EditText editAge;
-    private EditText editHeight;
     private EditText editWeight;
-    private Button btnSave;
     private RadioGroup RadioGroupbutton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        String PERSONAL_DATA_FILE = "personal-data";
+
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_personal_information);
@@ -36,20 +41,40 @@ public class PersonalInformation extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        sharedPreferences = getSharedPreferences("safe sip", MODE_PRIVATE);
+
+        PERSONAL_DATA_SET_KEY = "personal-data-set";
+        USERNAME_KEY = "username";
+        AGE_KEY = "age";
+        SEX_KEY = "sex";
+        WEIGHT_KEY = "weight";
+
+        sharedPreferences = getSharedPreferences(PERSONAL_DATA_FILE, MODE_PRIVATE);
         editUsername = findViewById(R.id.EditTextUsername);
         editAge = findViewById(R.id.EditTextAge);
-        editHeight = findViewById(R.id.EditTextHeight);
         editWeight = findViewById(R.id.EditTextWeight);
         RadioGroupbutton = findViewById(R.id.RadioGroupSex);
-        btnSave = findViewById(R.id.button);
+        Button btnSave = findViewById(R.id.button);
+
+        editAge.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+        });
 
         loadData();
 
-        btnSave.setOnClickListener(v -> saveData());
+        btnSave.setOnClickListener(this::saveData);
     }
 
-    private void saveData() {
+    private void saveData(View view) {
         String name = editUsername.getText().toString();
         if (name.isEmpty()) {
             editUsername.setError("Please enter username");
@@ -72,21 +97,6 @@ public class PersonalInformation extends AppCompatActivity {
             return;
         }
 
-        String heightText = editHeight.getText().toString();
-        if (heightText.isEmpty()) {
-            editHeight.setError("Please enter height");
-            editHeight.requestFocus();
-            return;
-        }
-        float height;
-        try {
-            height = Float.parseFloat(heightText);
-        } catch (NumberFormatException e) {
-            editHeight.setError("Invalid number");
-            editHeight.requestFocus();
-            return;
-        }
-
         String weightText = editWeight.getText().toString();
         if (weightText.isEmpty()) {
             editWeight.setError("Please enter weight");
@@ -102,40 +112,57 @@ public class PersonalInformation extends AppCompatActivity {
             return;
         }
 
+        int selectedId = RadioGroupbutton.getCheckedRadioButtonId();
+        if (selectedId == -1) {
+            Toast.makeText(this, "Please select your sex", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        RadioButton selectedRadioButton = findViewById(selectedId);
+        String sex = selectedRadioButton.getText().toString();
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("username", name);
-        editor.putInt("age", age);
-        editor.putFloat("height", height);
-        editor.putFloat("weight", weight);
+        editor.putBoolean(PERSONAL_DATA_SET_KEY, true);
+        editor.putString(USERNAME_KEY, name);
+        editor.putInt(AGE_KEY, age);
+        editor.putFloat(WEIGHT_KEY, weight);
+        editor.putString(SEX_KEY, sex);
         editor.apply();
+
+        Intent newActivity = new Intent(getApplicationContext(), ActionActivity.class);
+        startActivity(newActivity);
     }
+
     private void loadData() {
-        if (sharedPreferences.contains("username")) {
-            editUsername.setText(sharedPreferences.getString("username", ""));
+        if (sharedPreferences.contains(USERNAME_KEY)) {
+            editUsername.setText(sharedPreferences.getString(USERNAME_KEY, ""));
         } else {
             editUsername.setText("");
         }
-        if (sharedPreferences.contains("age")) {
-            int savedAge = sharedPreferences.getInt("age", 0);
-            editAge.setText(String.valueOf(savedAge));
+        if (sharedPreferences.contains(AGE_KEY)) {
+            String savedAge = String.valueOf(sharedPreferences.getInt(AGE_KEY, 0));
+//            savedAge += " years old";
+            editAge.setText(savedAge);
         } else {
             editAge.setText("");
         }
-        if(sharedPreferences.contains("height")) {
-            float savedHeight = sharedPreferences.getFloat("height", 0f);
-            editHeight.setText(String.valueOf(savedHeight));
-        } else {
-            editHeight.setText("");
-        }
-        if (sharedPreferences.contains("weight")) {
-            float savedWeight = sharedPreferences.getFloat("weight", 0f);
-            editWeight.setText(String.valueOf(savedWeight));
+        if (sharedPreferences.contains(WEIGHT_KEY)) {
+            String savedWeight = String.valueOf(sharedPreferences.getFloat(WEIGHT_KEY, 0f));
+//            savedWeight += " kg";
+            editWeight.setText(savedWeight);
         } else {
             editWeight.setText("");
         }
-
+        if (sharedPreferences.contains(SEX_KEY)) {
+            String savedSex = sharedPreferences.getString(SEX_KEY, "");
+            for (int i = 0; i<RadioGroupbutton.getChildCount(); i++){
+                RadioButton rb = (RadioButton) RadioGroupbutton.getChildAt(i);
+                if (rb.getText().toString().equals(savedSex)) {
+                    rb.setChecked(true);
+                    break;
+                }
+            }
+        } else {
+            RadioGroupbutton.clearCheck();
+        }
     }
-
-
 }

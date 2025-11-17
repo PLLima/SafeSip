@@ -3,9 +3,7 @@ package com.example.safesip;
 import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
-import android.app.SearchManager;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -42,7 +40,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
     }
 
     public void onClickRegister(View view) {
-        TextView drinkPlaceIndicator = findViewById(R.id.drinkAppearHere);
+        TextView drinkPlaceIndicator = findViewById(R.id.drinkRegistered);
         drinkPlaceIndicator.setVisibility(INVISIBLE);
         EditText drinkNameEditText = findViewById(R.id.drinkName);
         EditText drinkAmountEditText = findViewById(R.id.drinkAmount);

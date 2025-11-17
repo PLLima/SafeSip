@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.safesip">
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -15,13 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeSip">
         <receiver android:name=".MidnightReceiver" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MotivQuoteActivity" />
         <activity android:name=".PersonalInformation" />
+        <activity android:name=".RegisterDrinkActivity" />
+        <activity android:name=".ActionActivity"/>
         <activity
-            android:name=".ActionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MotivQuoteActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
