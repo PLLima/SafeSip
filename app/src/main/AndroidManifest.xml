@@ -11,15 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeSip">
-
-
-        <activity android:name=".PersonalInformation" />
-        <activity android:name=".MotivQuoteActivity" />
-        <activity
-            android:name=".ActionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".WelcomePage"
+        <receiver android:name=".MidnightReceiver" />
+        <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,6 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".PersonalInformation" />
+        <activity android:name=".MotivQuoteActivity" />
+        <activity android:name=".ActionActivity" />
+        <activity android:name=".RegisterDrinkActivity" />
     </application>
 
 </manifest>
