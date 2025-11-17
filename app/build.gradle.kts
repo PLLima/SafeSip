@@ -4,14 +4,13 @@ plugins {
 
 android {
     namespace = "com.example.safesip"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
+
 
     defaultConfig {
         applicationId = "com.example.safesip"
         minSdk = 27
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -34,6 +33,7 @@ android {
 }
 
 dependencies {
+    implementation("com.android.volley:volley:1.2.1")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
