@@ -1,5 +1,6 @@
 package com.example.safesip;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -9,10 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioGroup;
 
 
@@ -102,13 +100,15 @@ public class PersonalInformation extends AppCompatActivity {
             return;
         }
 
-
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("username", name);
         editor.putInt("age", age);
         editor.putFloat("height", height);
         editor.putFloat("weight", weight);
         editor.apply();
+
+        Intent newActivity = new Intent(getApplicationContext(), ActionActivity.class);
+        startActivity(newActivity);
     }
     private void loadData() {
         if (sharedPreferences.contains("username")) {
