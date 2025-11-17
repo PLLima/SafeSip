@@ -23,7 +23,6 @@ public class PersonalInformation extends AppCompatActivity {
     private Button btnSave;
     private RadioGroup RadioGroupbutton;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
