@@ -20,6 +20,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.time.LocalTime;
 import java.util.Map;
 
 public class RegisterDrinkActivity extends AppCompatActivity {
@@ -41,6 +42,8 @@ public class RegisterDrinkActivity extends AppCompatActivity {
     }
 
     public void onClickRegister(View view) {
+        TextView drinkPlaceIndicator = findViewById(R.id.drinkAppearHere);
+        drinkPlaceIndicator.setVisibility(INVISIBLE);
         EditText drinkNameEditText = findViewById(R.id.drinkName);
         EditText drinkAmountEditText = findViewById(R.id.drinkAmount);
         EditText drinkPercentageEditText = findViewById(R.id.drinkPercentage);
@@ -75,7 +78,9 @@ public class RegisterDrinkActivity extends AppCompatActivity {
         }
         registeredTextView.setVisibility(VISIBLE);
         (new Handler()).postDelayed(() -> registeredTextView.setVisibility(INVISIBLE), 3000);
-        String newDrinksString = drinksString + "," + drinkName;
+        String newDrinksString;
+        if (drinksString.isEmpty()) newDrinksString = drinkName;
+        else newDrinksString = drinksString + "," + drinkName;
         SharedPreferences.Editor editor = dataBase.edit();
         editor.putString("drinks" , newDrinksString);
         editor.apply();
@@ -89,7 +94,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
 
     public void updateScreen(String drinksString){
         LinearLayout layout = findViewById(R.id.registerDrink);
-        int countButtons = layout.getChildCount() - 7;
+        int countButtons = layout.getChildCount() - 8;
         for (int i = 0; i < countButtons; i++) {
             int lastIndex = layout.getChildCount() - 1;
             layout.removeViewAt(lastIndex);
@@ -135,7 +140,19 @@ public class RegisterDrinkActivity extends AppCompatActivity {
         drinkButton.setText(drink);
         drinkButton.setOnClickListener(v -> {
             SharedPreferences dataBase = getSharedPreferences("history", Context.MODE_PRIVATE);
-
+            String timesString = dataBase.getString("times", "");
+            String qntAlcoolString = dataBase.getString("alcool", "");
+            LocalTime agora = LocalTime.now();
+            int minutos = agora.getHour() * 60 + agora.getMinute();
+            StringBuilder newTimes = new StringBuilder();
+            if (!timesString.isEmpty()) {
+                newTimes.append(timesString).append(",");
+            }
+            newTimes.append(minutos);
+            StringBuilder newAlcool = new StringBuilder();
+            if (!qntAlcoolString.isEmpty()) {
+                newAlcool.append(qntAlcoolString).append(",");
+            }
             String alcoolByDay = dataBase.getString("alcoolByDay", "");
             String alreadyDrinkedToday = dataBase.getString("alreadyDrinkedToday", "0");
 
@@ -147,7 +164,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
             float amount = Float.parseFloat(drinkDB.getString("amount","0"));
             float percentage = Float.parseFloat(drinkDB.getString("percentage","0"));
             float qntAlcool = amount * percentage / 100;
-
+            newAlcool.append(qntAlcool);
             StringBuilder newAlcoolByDay = new StringBuilder();
 
             if ("1".equals(alreadyDrinkedToday)) {
@@ -183,7 +200,12 @@ public class RegisterDrinkActivity extends AppCompatActivity {
             }
             SharedPreferences.Editor editor = dataBase.edit();
             editor.putString("alcoolByDay", newAlcoolByDay.toString());
+            editor.putString("alcool", newAlcool.toString());
+            System.out.println(timesString);
+            editor.putString("times", newTimes.toString());
             editor.apply();
+            //vai pra página de cálculo de álcool
+
         });
         return drinkButton;
     }
