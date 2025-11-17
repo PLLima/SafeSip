@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeSip">
-
+        <receiver android:name=".MidnightReceiver" />
         <activity android:name=".MainActivity" />
         <activity android:name=".PersonalInformation" />
         <activity
