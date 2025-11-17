@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 
 
 public class PersonalInformation extends AppCompatActivity {
@@ -22,6 +23,7 @@ public class PersonalInformation extends AppCompatActivity {
     private EditText editHeight;
     private EditText editWeight;
     private Button btnSave;
+    private RadioGroup RadioGroupbutton;
 
 
     @Override
@@ -39,7 +41,8 @@ public class PersonalInformation extends AppCompatActivity {
         editAge = findViewById(R.id.EditTextAge);
         editHeight = findViewById(R.id.EditTextHeight);
         editWeight = findViewById(R.id.EditTextWeight);
-        btnSave = findViewById(R.id.RadioGroupSex);
+        RadioGroupbutton = findViewById(R.id.RadioGroupSex);
+        btnSave = findViewById(R.id.button);
 
         loadData();
 
@@ -99,6 +102,7 @@ public class PersonalInformation extends AppCompatActivity {
             return;
         }
 
+
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("username", name);
         editor.putInt("age", age);
@@ -107,16 +111,30 @@ public class PersonalInformation extends AppCompatActivity {
         editor.apply();
     }
     private void loadData() {
-        editUsername.setText(sharedPreferences.getString("username", ""));
+        if (sharedPreferences.contains("username")) {
+            editUsername.setText(sharedPreferences.getString("username", ""));
+        } else {
+            editUsername.setText("");
+        }
+        if (sharedPreferences.contains("age")) {
+            int savedAge = sharedPreferences.getInt("age", 0);
+            editAge.setText(String.valueOf(savedAge));
+        } else {
+            editAge.setText("");
+        }
+        if(sharedPreferences.contains("height")) {
+            float savedHeight = sharedPreferences.getFloat("height", 0f);
+            editHeight.setText(String.valueOf(savedHeight));
+        } else {
+            editHeight.setText("");
+        }
+        if (sharedPreferences.contains("weight")) {
+            float savedWeight = sharedPreferences.getFloat("weight", 0f);
+            editWeight.setText(String.valueOf(savedWeight));
+        } else {
+            editWeight.setText("");
+        }
 
-        int savedAge = sharedPreferences.getInt("age", 0);
-        editAge.setText(String.valueOf(savedAge));
-
-        float savedHeight = sharedPreferences.getFloat("height", 0f);
-        editHeight.setText(String.valueOf(savedHeight));
-
-        float savedWeight = sharedPreferences.getFloat("weight", 0f);
-        editWeight.setText(String.valueOf(savedWeight));
     }
 
 
