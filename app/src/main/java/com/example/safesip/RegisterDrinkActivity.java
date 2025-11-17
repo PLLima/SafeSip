@@ -34,6 +34,10 @@ public class RegisterDrinkActivity extends AppCompatActivity {
         if (!drinksString.isEmpty()) {
             updateScreen(drinksString);
         }
+        String strike = dataBase.getString("strike", "0");
+        Button b = findViewById(R.id.strikeButton);
+        b.setText("Check yours " + strike + " days strike");
+        MidnightScheduler.scheduleNextMidnight(this);
     }
 
     public void onClickRegister(View view) {
@@ -85,7 +89,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
 
     public void updateScreen(String drinksString){
         LinearLayout layout = findViewById(R.id.registerDrink);
-        int countButtons = layout.getChildCount() - 6;
+        int countButtons = layout.getChildCount() - 7;
         for (int i = 0; i < countButtons; i++) {
             int lastIndex = layout.getChildCount() - 1;
             layout.removeViewAt(lastIndex);
@@ -182,5 +186,9 @@ public class RegisterDrinkActivity extends AppCompatActivity {
             editor.apply();
         });
         return drinkButton;
+    }
+
+    public void onClickStrike(View view) {
+        //vai pra página do grafico
     }
 }

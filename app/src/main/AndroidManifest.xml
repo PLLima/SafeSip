@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -13,14 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeSip">
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".WelcomePage" />
         <activity android:name=".PersonalInformation" />
         <activity android:name=".MotivQuoteActivity" />
         <activity
             android:name=".ActionActivity"
             android:exported="false" />
         <activity
-            android:name=".WelcomePage"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
