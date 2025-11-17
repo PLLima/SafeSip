@@ -12,14 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeSip">
 
-        <activity android:name=".WelcomePage" />
+
         <activity android:name=".PersonalInformation" />
         <activity android:name=".MotivQuoteActivity" />
         <activity
             android:name=".ActionActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".WelcomePage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
