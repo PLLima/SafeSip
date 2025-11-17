@@ -44,6 +44,18 @@ public class PersonalInformation extends AppCompatActivity {
 
         loadData();
 
+        boolean allDataPresent =
+                sharedPreferences.contains("username") &&
+                        sharedPreferences.contains("age") &&
+                        sharedPreferences.contains("height") &&
+                        sharedPreferences.contains("weight") &&
+                        sharedPreferences.contains("sex");
+        if (allDataPresent) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("hasData", true);
+            editor.apply();
+        }
+
         btnSave.setOnClickListener(v -> saveData());
     }
 
