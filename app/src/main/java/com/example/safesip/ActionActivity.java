@@ -39,7 +39,7 @@ public class ActionActivity extends AppCompatActivity {
     public void handleClick(View view) {
         Intent newActivity;
         if(view.getId() == TrackButton.getId()) {
-            newActivity = new Intent(getApplicationContext(), ActionActivity.class);
+            newActivity = new Intent(getApplicationContext(), RegisterDrinkActivity.class);
             startActivity(newActivity);
         } else if(view.getId() == HistoryButton.getId()) {
             newActivity = new Intent(getApplicationContext(), ActionActivity.class);
