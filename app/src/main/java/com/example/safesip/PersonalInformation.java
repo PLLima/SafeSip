@@ -13,7 +13,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 
 public class PersonalInformation extends AppCompatActivity {
@@ -101,6 +103,14 @@ public class PersonalInformation extends AppCompatActivity {
             editWeight.requestFocus();
             return;
         }
+        int selectedId = RadioGroupbutton.getCheckedRadioButtonId();
+        if (selectedId == -1) {
+            Toast.makeText(this, "Please select your sex", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        RadioButton selectedRadioButton = findViewById(selectedId);
+        String sex = selectedRadioButton.getText().toString();
 
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -108,6 +118,7 @@ public class PersonalInformation extends AppCompatActivity {
         editor.putInt("age", age);
         editor.putFloat("height", height);
         editor.putFloat("weight", weight);
+        editor.putString("sex", sex);
         editor.apply();
     }
     private void loadData() {
@@ -134,8 +145,17 @@ public class PersonalInformation extends AppCompatActivity {
         } else {
             editWeight.setText("");
         }
-
+        if (sharedPreferences.contains("sex")) {
+            String savedSex = sharedPreferences.getString("sex", "");
+            for (int i = 0; i<RadioGroupbutton.getChildCount(); i++){
+                RadioButton rb = (RadioButton) RadioGroupbutton.getChildAt(i);
+                if (rb.getText().toString().equals(savedSex)) {
+                    rb.setChecked(true);
+                    break;
+                }
+            }
+        } else {
+            RadioGroupbutton.clearCheck();
+        }
     }
-
-
 }
