@@ -22,14 +22,14 @@ public class TooMuchAlcool extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_too_much_alcool);
         updateScreen();
     }
-    protected void onResume(Bundle savedInstanceState){
+    protected void onResume(){
         super.onResume();
         updateScreen();
     }
     public void updateScreen(){
-        setContentView(R.layout.activity_too_much_alcool);
         TextView tv = findViewById(R.id.AlcoolQuantityTextView);
         SharedPreferences dataBase = getSharedPreferences("history", Context.MODE_PRIVATE);
         String alcoolByDay = dataBase.getString("alcoolByDay", "0");
