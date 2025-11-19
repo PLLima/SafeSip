@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/registerDrink"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".RegisterDrinkActivity">
 
     <Button
         android:id="@+id/strikeButton"
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:onClick="onClickStrike"
         android:text="Register" />
 
@@ -26,47 +27,47 @@
 
     <EditText
         android:id="@+id/drinkName"
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:ems="10"
         android:gravity="center"
-        android:inputType="text"
-        android:hint="Drink" />
+        android:hint="Drink"
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/drinkAmount"
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:ems="10"
         android:gravity="center"
-        android:inputType="numberDecimal"
-        android:hint="Amount" />
+        android:hint="Amount"
+        android:inputType="numberDecimal" />
 
     <EditText
         android:id="@+id/drinkPercentage"
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:ems="10"
         android:gravity="center"
-        android:inputType="numberDecimal"
-        android:hint="Percentage" />
+        android:hint="Percentage"
+        android:inputType="numberDecimal" />
 
     <Button
         android:id="@+id/buttonRegister"
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:onClick="onClickRegister"
         android:text="Register" />
 
     <TextView
         android:id="@+id/drinkRegistered"
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:text="Drink Registered!"
         android:visibility="invisible" />
 
