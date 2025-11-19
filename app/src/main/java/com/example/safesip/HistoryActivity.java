@@ -15,6 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 public class HistoryActivity extends AppCompatActivity {
 
@@ -41,16 +42,24 @@ public class HistoryActivity extends AppCompatActivity {
                 selectedDate.set(year, month, dayOfMonth);
 
                 long diffMillis = today.getTimeInMillis() - selectedDate.getTimeInMillis();
-                int diffDays = (int) (diffMillis / (1000*60*60*24));
+                int diffDays = (int) (diffMillis / (1000 * 60 * 60 * 24));
 
                 int index = alcoholByDayArray.length - 1 - diffDays;
 
                 String drank = "0";
                 if (index >= 0 && index < alcoholByDayArray.length) {
-                    drank = alcoholByDayArray[index];
+                    drank = (alcoholByDayArray[index]);
+                    double ml = Double.parseDouble(drank);
+                    double portions = ml / 12.5;
+                    String portionsRounded = String.format(Locale.US, "%.2f", portions);
+                    if (!portionsRounded.equals("0.00")) {
+                        textView.setText("On " + dayOfMonth + "." + (month + 1) + "." + year + " you drank " + portionsRounded + " potions of alcohol.");
+                    } else {
+                        textView.setText("On " + dayOfMonth + "." + (month + 1) + "." + year + " you didn't drink any alcohol. Congratulations!!🎉");
+                    }
+                } else {
+                    textView.setText("No data for this day.");
                 }
-
-                textView.setText("On " + dayOfMonth + "." + (month+1) + "." + year + " you drank " +drank+ " potions of alcohol.");
             }
         });
 
