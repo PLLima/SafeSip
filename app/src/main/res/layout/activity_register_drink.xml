@@ -72,6 +72,13 @@
         android:onClick="onClickRegister"
         android:text="Register" />
 
+    <Button
+        android:id="@+id/undrink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="undrinkClick"
+        android:text="Undrink" />
+
     <TextView
         android:id="@+id/drinkRegistered"
         android:layout_width="wrap_content"
