@@ -1,6 +1,7 @@
 package com.example.safesip;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -80,6 +81,7 @@ public class Graph extends AppCompatActivity {
     }
 
     public void onClickBack(View view) {
-        finish();
+        Intent intent = new Intent(getApplicationContext(), ActionActivity.class);
+        startActivity(intent);
     }
 }

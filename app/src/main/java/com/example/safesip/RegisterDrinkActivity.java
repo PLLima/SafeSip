@@ -218,6 +218,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
     }
 
     public void onClickBack(View view) {
-        finish();
+        Intent intent = new Intent(getApplicationContext(), ActionActivity.class);
+        startActivity(intent);
     }
 }
