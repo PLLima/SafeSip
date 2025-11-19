@@ -19,6 +19,7 @@
         <activity android:name=".ActionActivity" />
         <activity android:name=".RegisterDrinkActivity" />
         <activity android:name=".HistoryActivity" />
+        <activity android:name=".Graph" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
