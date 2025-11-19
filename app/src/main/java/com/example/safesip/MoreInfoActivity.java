@@ -37,9 +37,8 @@ public class MoreInfoActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                helpWebView.setVisibility(View.VISIBLE);
-                helpWebView.setWebViewClient(new WebViewClient());
-                helpWebView.loadUrl("file:///android_asset/Help.html");
+                Intent intent = new Intent(MoreInfoActivity.this, WebviewActivity.class);
+                startActivity(intent);
             }});
         }
 
