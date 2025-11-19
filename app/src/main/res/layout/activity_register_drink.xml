@@ -32,7 +32,7 @@
         android:ems="10"
         android:gravity="center"
         android:inputType="text"
-        android:text="Drink" />
+        android:hint="Drink" />
 
     <EditText
         android:id="@+id/drinkAmount"
@@ -41,8 +41,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="center"
-        android:inputType="text"
-        android:text="Amount" />
+        android:inputType="numberDecimal"
+        android:hint="Amount" />
 
     <EditText
         android:id="@+id/drinkPercentage"
@@ -51,8 +51,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:gravity="center"
-        android:inputType="text"
-        android:text="Percentage" />
+        android:inputType="numberDecimal"
+        android:hint="Percentage" />
 
     <Button
         android:id="@+id/buttonRegister"
