@@ -23,10 +23,22 @@ public class TooMuchAlcool extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_too_much_alcool);
+        updateScreen();
+    }
+    protected void onResume(){
+        super.onResume();
+        updateScreen();
+    }
+    public void updateScreen(){
         TextView tv = findViewById(R.id.AlcoolQuantityTextView);
         SharedPreferences dataBase = getSharedPreferences("history", Context.MODE_PRIVATE);
         String alcoolByDay = dataBase.getString("alcoolByDay", "0");
-        String[] alcoolByDayArray = alcoolByDay.split(",");
+        String[] alcoolByDayArray;
+        if (alcoolByDay.trim().isEmpty()) {
+            alcoolByDayArray = new String[]{"0"};
+        } else {
+            alcoolByDayArray = alcoolByDay.split(",");
+        }
         float alcoolQuantity = (float) (Float.parseFloat(alcoolByDayArray[alcoolByDayArray.length-1]) * 0.789);
         tv.setText("You have drank " + Float.toString(alcoolQuantity) + "g of alcohol today");
         String timeString = dataBase.getString("times", "0");
@@ -38,7 +50,7 @@ public class TooMuchAlcool extends AppCompatActivity {
         else distributionFactor = 0.55;
         LocalTime agora = LocalTime.now();
         int minuts = agora.getHour() * 60 + agora.getMinute();
-        String[] timeStringArray = timeString.split(",");
+            String[] timeStringArray = timeString.split(",");
         String[] alcoolStringArray = alcoolString.split(",");
         float mass = personalDataBase.getFloat("weight", 0);
         double percentageOfAlcoolInBlood = 0;
@@ -56,17 +68,16 @@ public class TooMuchAlcool extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(TooMuchAlcool.this, AdviceActivity.class);
                 intent.putExtra("amount", finalPercentageOfAlcoolInBlood);
                 intent.putExtra("p", bacFormatted);
                 startActivity(intent);
-
-
-
             }
         });
     }
 
-
+    public void onClickBack(View view) {
+        Intent intent = new Intent(getApplicationContext(), RegisterDrinkActivity.class);
+        startActivity(intent);
+    }
 }

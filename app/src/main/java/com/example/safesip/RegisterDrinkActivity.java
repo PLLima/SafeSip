@@ -36,7 +36,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
         }
         String strike = dataBase.getString("strike", "0");
         Button b = findViewById(R.id.alcoholButton);
-        b.setText("How much alcohol do I have inside me?");
+        b.setText("How much alcohol do I have in my blood?");
         MidnightScheduler.scheduleNextMidnight(this);
     }
 
@@ -93,7 +93,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
 
     public void updateScreen(String drinksString) {
         LinearLayout layout = findViewById(R.id.registerDrink);
-        int countButtons = layout.getChildCount() - 8;
+        int countButtons = layout.getChildCount() - 9;
         for (int i = 0; i < countButtons; i++) {
             int lastIndex = layout.getChildCount() - 1;
             layout.removeViewAt(lastIndex);
@@ -155,7 +155,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
                 newAlcool.append(qntAlcoolString).append(",");
             }
             String alcoolByDay = dataBase.getString("alcoolByDay", "");
-            String alreadyDrinkedToday = dataBase.getString("alreadyDrinkedToday", "0");
+            String alreadyDrankToday = dataBase.getString("alreadyDrankToday", "0");
 
             String[] alcoolByDayArray =
                     alcoolByDay.isEmpty() ? new String[0] : alcoolByDay.split(",");
@@ -168,7 +168,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
             newAlcool.append(qntAlcool);
             StringBuilder newAlcoolByDay = new StringBuilder();
 
-            if ("1".equals(alreadyDrinkedToday)) {
+            if ("1".equals(alreadyDrankToday)) {
                 if (alcoolByDayArray.length == 0) {
                     newAlcoolByDay.append(qntAlcool);
                 } else {
@@ -195,7 +195,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
                 if (newAlcoolByDay.length() > 0) newAlcoolByDay.append(",");
                 newAlcoolByDay.append(qntAlcool);
                 SharedPreferences.Editor flagEditor = dataBase.edit();
-                flagEditor.putString("alreadyDrinkedToday", "1");
+                flagEditor.putString("alreadyDrankToday", "1");
                 flagEditor.apply();
             }
             SharedPreferences.Editor editor = dataBase.edit();
@@ -220,5 +220,46 @@ public class RegisterDrinkActivity extends AppCompatActivity {
     public void onClickBack(View view) {
         Intent intent = new Intent(getApplicationContext(), ActionActivity.class);
         startActivity(intent);
+    }
+
+    public void undrinkClick(View view) {
+        SharedPreferences dataBase = getSharedPreferences("history", Context.MODE_PRIVATE);
+        String alcool = dataBase.getString("alcool", "");
+        String times = dataBase.getString("times", "");
+        String alcoolByDay = dataBase.getString("alcoolByDay", "");
+        if (alcool.isEmpty() || times.isEmpty() || alcoolByDay.isEmpty()) {
+            return;
+        }
+        String[] alcoolArray = alcool.split(",");
+        String[] timesArray = times.split(",");
+        String[] alcoolByDayArray = alcoolByDay.split(",");
+        if (alcoolArray.length == 0 || timesArray.length == 0 || alcoolByDayArray.length == 0) {
+            return;
+        }
+        float valueToBeRemoved = Float.parseFloat(alcoolArray[alcoolArray.length - 1]);
+        float lastDayValue = Float.parseFloat(alcoolByDayArray[alcoolByDayArray.length - 1]);
+        float newLastValue = lastDayValue - valueToBeRemoved;
+        if (newLastValue < 0) newLastValue = 0;
+        alcoolByDayArray[alcoolByDayArray.length - 1] = Float.toString(newLastValue);
+        StringBuilder newAlcoolByDay = new StringBuilder();
+        for (int i = 0; i < alcoolByDayArray.length; i++) {
+            if (i > 0) newAlcoolByDay.append(",");
+            newAlcoolByDay.append(alcoolByDayArray[i]);
+        }
+        StringBuilder newAlcool = new StringBuilder();
+        StringBuilder newTimes = new StringBuilder();
+        for (int i = 0; i < alcoolArray.length - 1; i++) {
+            if (i > 0) {
+                newAlcool.append(",");
+                newTimes.append(",");
+            }
+            newAlcool.append(alcoolArray[i]);
+            newTimes.append(timesArray[i]);
+        }
+        SharedPreferences.Editor editor = dataBase.edit();
+        editor.putString("alcoolByDay", newAlcoolByDay.toString());
+        editor.putString("alcool", newAlcool.toString());
+        editor.putString("times", newTimes.toString());
+        editor.apply();
     }
 }
