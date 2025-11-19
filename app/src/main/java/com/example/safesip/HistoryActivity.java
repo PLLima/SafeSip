@@ -3,6 +3,7 @@ package com.example.safesip;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,5 +69,9 @@ public class HistoryActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    public void onClickBack(View view) {
+        finish();
     }
 }

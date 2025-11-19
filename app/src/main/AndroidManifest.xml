@@ -19,12 +19,13 @@
             android:exported="false" />
 
         <receiver android:name=".MidnightReceiver" />
-
+        <activity android:name=".Graph" />
         <activity android:name=".MotivQuoteActivity" />
         <activity android:name=".PersonalInformation" />
         <activity android:name=".ActionActivity" />
         <activity android:name=".RegisterDrinkActivity" />
         <activity android:name=".TooMuchAlcool" />
+        <activity android:name=".HistoryActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

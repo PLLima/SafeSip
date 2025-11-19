@@ -105,7 +105,9 @@ public class RegisterDrinkActivity extends AppCompatActivity {
             LinearLayout row = new LinearLayout(this);
             row.setOrientation(LinearLayout.HORIZONTAL);
             row.setGravity(Gravity.CENTER);
-            Button drinkButton = getButton(drink);
+            SharedPreferences dbDrink = getSharedPreferences(drink, MODE_PRIVATE);
+            String volume = dbDrink.getString("amount", "");
+            Button drinkButton = getButton(drink, volume);
             Button removeDrink = new Button(this);
             removeDrink.setText("-");
             removeDrink.setOnClickListener(v -> {
@@ -134,9 +136,9 @@ public class RegisterDrinkActivity extends AppCompatActivity {
     }
 
     @NonNull
-    private Button getButton(String drink) {
+    private Button getButton(String drink, String volume) {
         Button drinkButton = new Button(this);
-        drinkButton.setText(drink);
+        drinkButton.setText(drink + " " + volume + " mL");
         drinkButton.setOnClickListener(v -> {
             SharedPreferences dataBase = getSharedPreferences("history", Context.MODE_PRIVATE);
             String timesString = dataBase.getString("times", "");
@@ -205,7 +207,6 @@ public class RegisterDrinkActivity extends AppCompatActivity {
 
             Intent intent = new Intent(RegisterDrinkActivity.this, TooMuchAlcool.class);
             startActivity(intent);
-            //vai pra página de cálculo de álcool
         });
         return drinkButton;
     }
