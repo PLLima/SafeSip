@@ -46,7 +46,7 @@ public class ActionActivity extends AppCompatActivity {
             newActivity = new Intent(getApplicationContext(), RegisterDrinkActivity.class);
             startActivity(newActivity);
         } else if(view.getId() == HistoryButton.getId()) {
-            newActivity = new Intent(getApplicationContext(), ActionActivity.class);
+            newActivity = new Intent(getApplicationContext(), HistoryActivity.class);
             startActivity(newActivity);
         } else if(view.getId() == StatisticsButton.getId()) {
             newActivity = new Intent(getApplicationContext(), Graph.class);
