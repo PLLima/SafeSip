@@ -33,7 +33,6 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core:1.13.1")
     implementation("com.android.volley:volley:1.2.1")
     implementation(libs.appcompat)
     implementation(libs.material)
