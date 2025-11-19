@@ -22,6 +22,13 @@ public class TooMuchAlcool extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+        updateScreen();
+    }
+    protected void onResume(Bundle savedInstanceState){
+        super.onResume();
+        updateScreen();
+    }
+    public void updateScreen(){
         setContentView(R.layout.activity_too_much_alcool);
         TextView tv = findViewById(R.id.AlcoolQuantityTextView);
         SharedPreferences dataBase = getSharedPreferences("history", Context.MODE_PRIVATE);
@@ -56,17 +63,11 @@ public class TooMuchAlcool extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(TooMuchAlcool.this, AdviceActivity.class);
                 intent.putExtra("amount", finalPercentageOfAlcoolInBlood);
                 intent.putExtra("p", bacFormatted);
                 startActivity(intent);
-
-
-
             }
         });
     }
-
-
 }
