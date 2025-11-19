@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         if (hasPersonalData) {
             welcomeButton.setText("Start");
             welcomeButton.setOnClickListener(v -> {
-                Intent intent = new Intent(getApplicationContext(), MotivQuoteActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PersonalInformation.class);
                 startActivity(intent);
             });
         } else {
