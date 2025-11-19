@@ -3,8 +3,6 @@ package com.example.safesip;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import androidx.activity.EdgeToEdge;
@@ -54,20 +52,6 @@ public class PersonalInformation extends AppCompatActivity {
         editWeight = findViewById(R.id.EditTextWeight);
         RadioGroupbutton = findViewById(R.id.RadioGroupSex);
         Button btnSave = findViewById(R.id.button);
-
-        editAge.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-        });
 
         loadData();
 
@@ -140,14 +124,12 @@ public class PersonalInformation extends AppCompatActivity {
         }
         if (sharedPreferences.contains(AGE_KEY)) {
             String savedAge = String.valueOf(sharedPreferences.getInt(AGE_KEY, 0));
-//            savedAge += " years old";
             editAge.setText(savedAge);
         } else {
             editAge.setText("");
         }
         if (sharedPreferences.contains(WEIGHT_KEY)) {
             String savedWeight = String.valueOf(sharedPreferences.getFloat(WEIGHT_KEY, 0f));
-//            savedWeight += " kg";
             editWeight.setText(savedWeight);
         } else {
             editWeight.setText("");
