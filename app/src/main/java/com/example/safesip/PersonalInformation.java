@@ -123,7 +123,7 @@ public class PersonalInformation extends AppCompatActivity {
             editor.putString(SEX_KEY, sex);
             editor.apply();
 
-            Intent newActivity = new Intent(getApplicationContext(), ActionActivity.class);
+            Intent newActivity = new Intent(getApplicationContext(), MotivQuoteActivity.class);
             startActivity(newActivity);
         }
 
