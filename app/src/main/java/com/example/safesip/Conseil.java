@@ -56,10 +56,6 @@ public class Conseil {
     }
 
 
-    // ---------------------------
-    //      WARNINGS PAR NIVEAU
-    // ---------------------------
-
     private static String warning(double bac) {
         if (bac < 0.6) return "";
         if (bac < 1.2) return "Your reflexes are slowing down — avoid driving.";
@@ -68,19 +64,6 @@ public class Conseil {
         return "⚠️ CRITICAL: Risk of coma. Call someone immediately.";
     }
 
-
-    // ---------------------------
-    // RANDOM → pick inside a list
-    // ---------------------------
-
-    private static String pickRandom(List<String> list) {
-        return list.get(random.nextInt(list.size()));
-    }
-
-
-    // ---------------------------
-    // PUBLIC METHOD → get message
-    // ---------------------------
 
     public static String getAllAdvices(double bac) {
 
