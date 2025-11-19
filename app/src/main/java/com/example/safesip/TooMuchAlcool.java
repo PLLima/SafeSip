@@ -1,9 +1,11 @@
 package com.example.safesip;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -47,9 +49,24 @@ public class TooMuchAlcool extends AppCompatActivity {
         String bacFormatted = String.format("%.2f", percentageOfAlcoolInBlood);
         TextView tvPercentage = findViewById(R.id.PercentageTextView);
         tvPercentage.setText("Now, you have " + bacFormatted + " g/L in your blood");
+
+        Button b1 = findViewById(R.id.button2);
+
+        double finalPercentageOfAlcoolInBlood = percentageOfAlcoolInBlood;
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(TooMuchAlcool.this, AdviceActivity.class);
+                intent.putExtra("amount", finalPercentageOfAlcoolInBlood);
+                intent.putExtra("p", bacFormatted);
+                startActivity(intent);
+
+
+
+            }
+        });
     }
 
-    public void onClickBack(View view) {
-        finish();
-    }
+
 }
