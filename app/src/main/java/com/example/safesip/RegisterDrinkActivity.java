@@ -35,8 +35,8 @@ public class RegisterDrinkActivity extends AppCompatActivity {
             updateScreen(drinksString);
         }
         String strike = dataBase.getString("strike", "0");
-        Button b = findViewById(R.id.strikeButton);
-        b.setText("Check yours " + strike + " days strike");
+        Button b = findViewById(R.id.alcoholButton);
+        b.setText("How much alcohol do I have inside me?");
         MidnightScheduler.scheduleNextMidnight(this);
     }
 
@@ -211,6 +211,12 @@ public class RegisterDrinkActivity extends AppCompatActivity {
     }
 
 
+    public void onClickAlcohol(View view) {
+        Intent intent = new Intent(getApplicationContext(), TooMuchAlcool.class);
+        startActivity(intent);
+    }
 
-
+    public void onClickBack(View view) {
+        finish();
+    }
 }
