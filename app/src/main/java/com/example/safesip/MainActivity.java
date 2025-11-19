@@ -10,8 +10,18 @@ import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
+
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
+
+    private String PERSONAL_DATA_FILE;
+    private String PERSONAL_DATA_SET_KEY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +37,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        PERSONAL_DATA_FILE = "personal-data";
+        PERSONAL_DATA_SET_KEY = "personal-data-set";
+
         Button welcomeButton;
-        String PERSONAL_DATA_FILE = "personal-data";
-        String PERSONAL_DATA_SET_KEY = "personal-data-set";
 
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
@@ -51,6 +62,60 @@ public class MainActivity extends AppCompatActivity {
                 Intent newActivity = new Intent(getApplicationContext(), PersonalInformation.class);
                 startActivity(newActivity);
             });
+        }
+
+        // Add daily reminder everyday at a set hour
+        scheduleDailyReminder(hasPersonalData, 12, 30);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        NotificationManagerCompat.from(this).cancelAll();
+    }
+
+    @Override
+    protected void onStop() {
+        SharedPreferences prefs = getSharedPreferences(PERSONAL_DATA_FILE, MODE_PRIVATE);
+        boolean hasPersonalData = prefs.getBoolean(PERSONAL_DATA_SET_KEY, false);
+
+        // Re-add daily reminder everyday at a set hour
+        scheduleDailyReminder(hasPersonalData, 12, 30);
+        super.onStop();
+    }
+
+    public void scheduleDailyReminder(boolean isUserRegistered, int hour, int minute) {
+
+        if(isUserRegistered) {
+            long currentTime = System.currentTimeMillis();
+
+            Calendar now = Calendar.getInstance();
+            Calendar next = Calendar.getInstance();
+
+            next.set(Calendar.HOUR_OF_DAY, hour);
+            next.set(Calendar.MINUTE, minute);
+            next.set(Calendar.SECOND, 0);
+
+            if (next.before(now)) {
+                next.add(Calendar.DAY_OF_MONTH, 1);
+            }
+
+            long initialDelay = next.getTimeInMillis() - currentTime;
+
+            PeriodicWorkRequest request =
+                    new PeriodicWorkRequest.Builder(DailyReminderWorker.class, 24, TimeUnit.HOURS)
+                            .setInitialDelay(initialDelay, TimeUnit.MILLISECONDS)
+                            .build();
+
+            WorkManager.getInstance(this)
+                    .enqueueUniquePeriodicWork(
+                            "daily_reminder",
+                            ExistingPeriodicWorkPolicy.UPDATE,
+                            request
+                    );
+        } else {
+            WorkManager.getInstance(this)
+                    .cancelUniqueWork("daily_reminder");
         }
     }
 }

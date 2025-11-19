@@ -49,7 +49,7 @@ public class ActionActivity extends AppCompatActivity {
             newActivity = new Intent(getApplicationContext(), ActionActivity.class);
             startActivity(newActivity);
         } else if(view.getId() == StatisticsButton.getId()) {
-            newActivity = new Intent(getApplicationContext(), ActionActivity.class);
+            newActivity = new Intent(getApplicationContext(), Graph.class);
             startActivity(newActivity);
         }
     }
