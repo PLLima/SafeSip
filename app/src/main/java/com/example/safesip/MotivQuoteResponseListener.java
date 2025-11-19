@@ -1,6 +1,7 @@
 package com.example.safesip;
 
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.android.volley.Response;
@@ -39,6 +40,8 @@ public class MotivQuoteResponseListener implements Response.Listener<String> {
             tv.setAlpha(0f);
             tv.setText(quote + "\n" + "\n"  + "—" + author );
             tv.animate().alpha(1f).setDuration(600);
+            tv.setTypeface(tv.getTypeface(), android.graphics.Typeface.BOLD);
+            tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
         } catch (JSONException e) {
             throw new RuntimeException(e);

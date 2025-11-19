@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         if (hasPersonalData) {
             welcomeButton.setText("Start");
             welcomeButton.setOnClickListener(v -> {
-                Intent intent = new Intent(getApplicationContext(), ActionActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MotivQuoteActivity.class);
                 startActivity(intent);
             });
         } else {

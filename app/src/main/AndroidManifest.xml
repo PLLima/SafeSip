@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.safesip">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
@@ -16,8 +17,9 @@
         <receiver android:name=".MidnightReceiver" />
         <activity android:name=".MotivQuoteActivity" />
         <activity android:name=".PersonalInformation" />
-        <activity android:name=".RegisterDrinkActivity" />
-        <activity android:name=".ActionActivity"/>
+        <activity
+            android:name=".ActionActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
