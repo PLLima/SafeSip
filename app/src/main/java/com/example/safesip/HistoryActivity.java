@@ -1,6 +1,7 @@
 package com.example.safesip;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -52,9 +53,9 @@ public class HistoryActivity extends AppCompatActivity {
                     drank = (alcoholByDayArray[index]);
                     double ml = Double.parseDouble(drank);
                     double portions = ml / 12.5;
-                    String portionsRounded = String.format(Locale.US, "%.2f", portions);
+                    String portionsRounded = String.format(Locale.US, "%.1f", portions);
                     if (!portionsRounded.equals("0.00")) {
-                        textView.setText("On " + dayOfMonth + "." + (month + 1) + "." + year + " you drank " + portionsRounded + " potions of alcohol.");
+                        textView.setText("On " + dayOfMonth + "." + (month + 1) + "." + year + " you drank " + portionsRounded + " potions of alcohol.\uD83C\uDF7E⚠\uFE0F");
                     } else {
                         textView.setText("On " + dayOfMonth + "." + (month + 1) + "." + year + " you didn't drink any alcohol. Congratulations!!🎉");
                     }
@@ -72,6 +73,7 @@ public class HistoryActivity extends AppCompatActivity {
     }
 
     public void onClickBack(View view) {
-        finish();
+        Intent intent = new Intent(getApplicationContext(), ActionActivity.class);
+        startActivity(intent);
     }
 }
