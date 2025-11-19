@@ -72,7 +72,7 @@ public class TooMuchAlcool extends AppCompatActivity {
     }
 
     public void onClickBack(View view) {
-        Intent intent = new Intent(getApplicationContext(), ActionActivity.class);
+        Intent intent = new Intent(getApplicationContext(), RegisterDrinkActivity.class);
         startActivity(intent);
     }
 }
