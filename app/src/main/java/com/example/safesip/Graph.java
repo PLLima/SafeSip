@@ -31,10 +31,14 @@ public class Graph extends AppCompatActivity {
         String alcoolByDay = dataBase.getString("alcoolByDay", "");
         String[] alcoolByDayArray = alcoolByDay.isEmpty() ? new String[0] : alcoolByDay.split(",");
 
+        int totalDays = alcoolByDayArray.length;
+        int startIndex = Math.max(totalDays - 14, 0);
+
         LineChart chart = findViewById(R.id.alcoolChart);
         List<Entry> entries = new ArrayList<>();
         int dayIndex = 1;
-        for (String s : alcoolByDayArray) {
+        for (int i = startIndex; i<totalDays; i++) {
+            String s = alcoolByDayArray[i];
             if (s.isEmpty()) continue;
             try {
                 float value = Float.parseFloat(s);
@@ -42,7 +46,7 @@ public class Graph extends AppCompatActivity {
                 dayIndex++;
             } catch (NumberFormatException ignored) {}
         }
-        LineDataSet dataSet = new LineDataSet(entries, "Alcohol by day (mL)");
+        LineDataSet dataSet = new LineDataSet(entries, "Alcohol per day (ml)");
         dataSet.setLineWidth(2.5f);
         dataSet.setCircleRadius(4f);
         dataSet.setCircleHoleRadius(2f);

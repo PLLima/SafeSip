@@ -36,7 +36,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
         }
         String strike = dataBase.getString("strike", "0");
         Button b = findViewById(R.id.alcoholButton);
-        b.setText("How much alcohol do I have inside me?");
+        b.setText("How much alcohol do I have in my blood?");
         MidnightScheduler.scheduleNextMidnight(this);
     }
 
@@ -155,7 +155,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
                 newAlcool.append(qntAlcoolString).append(",");
             }
             String alcoolByDay = dataBase.getString("alcoolByDay", "");
-            String alreadyDrinkedToday = dataBase.getString("alreadyDrinkedToday", "0");
+            String alreadyDrankToday = dataBase.getString("alreadyDrankToday", "0");
 
             String[] alcoolByDayArray =
                     alcoolByDay.isEmpty() ? new String[0] : alcoolByDay.split(",");
@@ -168,7 +168,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
             newAlcool.append(qntAlcool);
             StringBuilder newAlcoolByDay = new StringBuilder();
 
-            if ("1".equals(alreadyDrinkedToday)) {
+            if ("1".equals(alreadyDrankToday)) {
                 if (alcoolByDayArray.length == 0) {
                     newAlcoolByDay.append(qntAlcool);
                 } else {
@@ -195,7 +195,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
                 if (newAlcoolByDay.length() > 0) newAlcoolByDay.append(",");
                 newAlcoolByDay.append(qntAlcool);
                 SharedPreferences.Editor flagEditor = dataBase.edit();
-                flagEditor.putString("alreadyDrinkedToday", "1");
+                flagEditor.putString("alreadyDrankToday", "1");
                 flagEditor.apply();
             }
             SharedPreferences.Editor editor = dataBase.edit();

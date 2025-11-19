@@ -5,6 +5,7 @@
     android:id="@+id/registerDrink"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#90EBD370"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".RegisterDrinkActivity">
@@ -13,9 +14,9 @@
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
         android:layout_margin="16dp"
-        android:onClick="onClickBack" />
+        android:onClick="onClickBack"
+        android:text="Back" />
 
     <Button
         android:id="@+id/alcoholButton"
@@ -30,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="What did you drinked today?"
+        android:text="What did you drink today?"
         android:textSize="25dp" />
 
     <EditText

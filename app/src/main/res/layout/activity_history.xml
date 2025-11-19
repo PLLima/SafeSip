@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#90E9DAA9"
+    android:background="#90EBD370"
     tools:context=".HistoryActivity">
 
     <LinearLayout
@@ -35,8 +35,8 @@
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
         android:layout_margin="16dp"
-        android:onClick="onClickBack" />
+        android:onClick="onClickBack"
+        android:text="Back" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
