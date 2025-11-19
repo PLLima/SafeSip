@@ -80,71 +80,82 @@ public class PersonalInformation extends AppCompatActivity {
             editAge.requestFocus();
             return;
         }
-
-        String weightText = editWeight.getText().toString();
-        if (weightText.isEmpty()) {
-            editWeight.setError("Please enter weight");
-            editWeight.requestFocus();
-            return;
-        }
-        float weight;
-        try {
-            weight = Float.parseFloat(weightText);
-        } catch (NumberFormatException e) {
-            editWeight.setError("Invalid weight");
-            editWeight.requestFocus();
+        if (age < 16 || age > 99) {
+            editAge.setError("Age mus be between 16 and 99");
+            editAge.requestFocus();
             return;
         }
 
-        int selectedId = RadioGroupbutton.getCheckedRadioButtonId();
-        if (selectedId == -1) {
-            Toast.makeText(this, "Please select your sex", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        RadioButton selectedRadioButton = findViewById(selectedId);
-        String sex = selectedRadioButton.getText().toString();
-
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(PERSONAL_DATA_SET_KEY, true);
-        editor.putString(USERNAME_KEY, name);
-        editor.putInt(AGE_KEY, age);
-        editor.putFloat(WEIGHT_KEY, weight);
-        editor.putString(SEX_KEY, sex);
-        editor.apply();
-
-        Intent newActivity = new Intent(getApplicationContext(), ActionActivity.class);
-        startActivity(newActivity);
-    }
-
-    private void loadData() {
-        if (sharedPreferences.contains(USERNAME_KEY)) {
-            editUsername.setText(sharedPreferences.getString(USERNAME_KEY, ""));
-        } else {
-            editUsername.setText("");
-        }
-        if (sharedPreferences.contains(AGE_KEY)) {
-            String savedAge = String.valueOf(sharedPreferences.getInt(AGE_KEY, 0));
-            editAge.setText(savedAge);
-        } else {
-            editAge.setText("");
-        }
-        if (sharedPreferences.contains(WEIGHT_KEY)) {
-            String savedWeight = String.valueOf(sharedPreferences.getFloat(WEIGHT_KEY, 0f));
-            editWeight.setText(savedWeight);
-        } else {
-            editWeight.setText("");
-        }
-        if (sharedPreferences.contains(SEX_KEY)) {
-            String savedSex = sharedPreferences.getString(SEX_KEY, "");
-            for (int i = 0; i<RadioGroupbutton.getChildCount(); i++){
-                RadioButton rb = (RadioButton) RadioGroupbutton.getChildAt(i);
-                if (rb.getText().toString().equals(savedSex)) {
-                    rb.setChecked(true);
-                    break;
-                }
+            String weightText = editWeight.getText().toString();
+            if (weightText.isEmpty()) {
+                editWeight.setError("Please enter weight");
+                editWeight.requestFocus();
+                return;
             }
-        } else {
-            RadioGroupbutton.clearCheck();
+            float weight;
+            try {
+                weight = Float.parseFloat(weightText);
+            } catch (NumberFormatException e) {
+                editWeight.setError("Invalid weight");
+                editWeight.requestFocus();
+                return;
+            }
+            if (weight < 40.0 || weight > 300.0) {
+                editWeight.setError("Weight must be between 40kg and 300kg");
+                editWeight.requestFocus();
+                return;
+
+            }
+
+            int selectedId = RadioGroupbutton.getCheckedRadioButtonId();
+            if (selectedId == -1) {
+                Toast.makeText(this, "Please select your sex", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            RadioButton selectedRadioButton = findViewById(selectedId);
+            String sex = selectedRadioButton.getText().toString();
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean(PERSONAL_DATA_SET_KEY, true);
+            editor.putString(USERNAME_KEY, name);
+            editor.putInt(AGE_KEY, age);
+            editor.putFloat(WEIGHT_KEY, weight);
+            editor.putString(SEX_KEY, sex);
+            editor.apply();
+
+            Intent newActivity = new Intent(getApplicationContext(), ActionActivity.class);
+            startActivity(newActivity);
+        }
+
+        private void loadData () {
+            if (sharedPreferences.contains(USERNAME_KEY)) {
+                editUsername.setText(sharedPreferences.getString(USERNAME_KEY, ""));
+            } else {
+                editUsername.setText("");
+            }
+            if (sharedPreferences.contains(AGE_KEY)) {
+                String savedAge = String.valueOf(sharedPreferences.getInt(AGE_KEY, 0));
+                editAge.setText(savedAge);
+            } else {
+                editAge.setText("");
+            }
+            if (sharedPreferences.contains(WEIGHT_KEY)) {
+                String savedWeight = String.valueOf(sharedPreferences.getFloat(WEIGHT_KEY, 0f));
+                editWeight.setText(savedWeight);
+            } else {
+                editWeight.setText("");
+            }
+            if (sharedPreferences.contains(SEX_KEY)) {
+                String savedSex = sharedPreferences.getString(SEX_KEY, "");
+                for (int i = 0; i < RadioGroupbutton.getChildCount(); i++) {
+                    RadioButton rb = (RadioButton) RadioGroupbutton.getChildAt(i);
+                    if (rb.getText().toString().equals(savedSex)) {
+                        rb.setChecked(true);
+                        break;
+                    }
+                }
+            } else {
+                RadioGroupbutton.clearCheck();
+            }
         }
     }
-}
