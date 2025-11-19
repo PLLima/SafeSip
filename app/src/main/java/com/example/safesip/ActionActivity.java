@@ -1,6 +1,8 @@
 package com.example.safesip;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,8 +31,10 @@ public class ActionActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        SharedPreferences dataBase = getSharedPreferences("history", Context.MODE_PRIVATE);
+        String streak = dataBase.getString("strike", "0");
         StreakText = findViewById(R.id.StreakText);
+        StreakText.setText("You are on a " + streak + " days streak!");
         TrackButton = findViewById(R.id.TrackButton);
         HistoryButton = findViewById(R.id.HistoryButton);
         StatisticsButton = findViewById(R.id.StatisticsButton);
