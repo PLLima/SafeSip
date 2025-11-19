@@ -1,6 +1,9 @@
 package com.example.safesip;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +13,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
 
 public class MotivQuoteActivity extends AppCompatActivity {
 
@@ -32,5 +36,24 @@ public class MotivQuoteActivity extends AppCompatActivity {
         );
 
         requestQueue.add(request);
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(MotivQuoteActivity.this, ActionActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }, 5000);
     }
+
+
+
+    /*Intent intent = new Intent(MotivQuoteActivity.this, ActionActivity.class);
+    startActivity(intent);
+    finish(); */
+
+
+
+
+
 }
