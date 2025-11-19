@@ -43,17 +43,7 @@ public class MotivQuoteActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        }, 5000);
+        }, 8000);
     }
-
-
-
-    /*Intent intent = new Intent(MotivQuoteActivity.this, ActionActivity.class);
-    startActivity(intent);
-    finish(); */
-
-
-
-
 
 }

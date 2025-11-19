@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#9DF2E239"
+    android:background="#84B76FC3"
     tools:context=".MotivQuoteActivity">
 
     <TextView

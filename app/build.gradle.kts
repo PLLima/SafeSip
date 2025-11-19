@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-    implementation("androidx.work:work-runtime:2.11.0")
+    implementation("androidx.work:work-runtime:2.9.0")
     implementation(libs.volley)
     implementation(libs.appcompat)
     implementation(libs.material)

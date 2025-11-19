@@ -4,6 +4,7 @@ import static android.view.View.INVISIBLE;
 import static android.view.View.VISIBLE;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -48,26 +49,26 @@ public class RegisterDrinkActivity extends AppCompatActivity {
         String drinkName = String.valueOf(drinkNameEditText.getText());
         String drinkAmount = String.valueOf(drinkAmountEditText.getText());
         String drinkPercentage = String.valueOf(drinkPercentageEditText.getText());
-        TextView registeredTextView= findViewById(R.id.drinkRegistered);
+        TextView registeredTextView = findViewById(R.id.drinkRegistered);
         if (drinkName.isEmpty() || drinkAmount.isEmpty() || drinkPercentage.isEmpty()) {
             registeredTextView.setText("Please, fill every field before proceding!");
-        }
-        else{;
+        } else {
+            ;
             registeredTextView.setText("Drink Registered!");
         }
         SharedPreferences dataBase = getSharedPreferences("history", Context.MODE_PRIVATE);
         Map<String, ?> map = dataBase.getAll();
         String drinksString = (String) map.get("drinks");
-        if(drinksString == null) drinksString = "";
+        if (drinksString == null) drinksString = "";
         String[] drinksArray = drinksString.split(",");
-        if(drinksArray.length > 4){
+        if (drinksArray.length > 4) {
             registeredTextView.setText("Please remove one drink before adding a new one!");
             registeredTextView.setVisibility(VISIBLE);
             (new Handler()).postDelayed(() -> registeredTextView.setVisibility(INVISIBLE), 3000);
             return;
         }
-        for(String s : drinksArray){
-            if(s.equals(drinkName) && !drinkName.isEmpty()){
+        for (String s : drinksArray) {
+            if (s.equals(drinkName) && !drinkName.isEmpty()) {
                 registeredTextView.setText("Drink already registered!");
                 registeredTextView.setVisibility(VISIBLE);
                 (new Handler()).postDelayed(() -> registeredTextView.setVisibility(INVISIBLE), 3000);
@@ -80,7 +81,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
         if (drinksString.isEmpty()) newDrinksString = drinkName;
         else newDrinksString = drinksString + "," + drinkName;
         SharedPreferences.Editor editor = dataBase.edit();
-        editor.putString("drinks" , newDrinksString);
+        editor.putString("drinks", newDrinksString);
         editor.apply();
         SharedPreferences newDrinkDB = getSharedPreferences(drinkName, Context.MODE_PRIVATE);
         editor = newDrinkDB.edit();
@@ -90,7 +91,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
         updateScreen(newDrinksString);
     }
 
-    public void updateScreen(String drinksString){
+    public void updateScreen(String drinksString) {
         LinearLayout layout = findViewById(R.id.registerDrink);
         int countButtons = layout.getChildCount() - 8;
         for (int i = 0; i < countButtons; i++) {
@@ -159,8 +160,8 @@ public class RegisterDrinkActivity extends AppCompatActivity {
 
             SharedPreferences drinkDB = getSharedPreferences(drink, Context.MODE_PRIVATE);
 
-            float amount = Float.parseFloat(drinkDB.getString("amount","0"));
-            float percentage = Float.parseFloat(drinkDB.getString("percentage","0"));
+            float amount = Float.parseFloat(drinkDB.getString("amount", "0"));
+            float percentage = Float.parseFloat(drinkDB.getString("percentage", "0"));
             float qntAlcool = amount * percentage / 100;
             newAlcool.append(qntAlcool);
             StringBuilder newAlcoolByDay = new StringBuilder();
@@ -183,8 +184,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
                     if (newAlcoolByDay.length() > 0) newAlcoolByDay.append(",");
                     newAlcoolByDay.append(alcoolToday);
                 }
-            }
-            else {
+            } else {
                 for (String s : alcoolByDayArray) {
                     if (s.isEmpty()) continue;
                     if (newAlcoolByDay.length() > 0) newAlcoolByDay.append(",");
@@ -202,13 +202,15 @@ public class RegisterDrinkActivity extends AppCompatActivity {
             System.out.println(timesString);
             editor.putString("times", newTimes.toString());
             editor.apply();
-            //vai pra página de cálculo de álcool
 
+            Intent intent = new Intent(RegisterDrinkActivity.this, TooMuchAlcool.class);
+            startActivity(intent);
+            //vai pra página de cálculo de álcool
         });
         return drinkButton;
     }
 
-    public void onClickStrike(View view) {
-        //vai pra página do grafico
-    }
+
+
+
 }
