@@ -3,6 +3,7 @@ package com.example.safesip;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -45,6 +46,10 @@ public class TooMuchAlcool extends AppCompatActivity {
         }
         String bacFormatted = String.format("%.2f", percentageOfAlcoolInBlood);
         TextView tvPercentage = findViewById(R.id.PercentageTextView);
-        tvPercentage.setText("Now, you have " + bacFormatted + "% in your blood");
+        tvPercentage.setText("Now, you have " + bacFormatted + " g/L in your blood");
+    }
+
+    public void onClickBack(View view) {
+        finish();
     }
 }

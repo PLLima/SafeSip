@@ -7,6 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".TooMuchAlcool">
 
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_margin="16dp"
+        android:onClick="onClickBack" />
+
     <TextView
         android:id="@+id/ThankYouTextView"
         android:layout_width="wrap_content"
