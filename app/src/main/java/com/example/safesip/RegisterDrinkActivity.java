@@ -228,6 +228,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
     }
 
     public void undrinkClick(View view) {
+        Toast.makeText(RegisterDrinkActivity.this, "You removed the drink successfully", Toast.LENGTH_SHORT).show();
         SharedPreferences dataBase = getSharedPreferences("history", Context.MODE_PRIVATE);
         String alcool = dataBase.getString("alcool", "");
         String times = dataBase.getString("times", "");
