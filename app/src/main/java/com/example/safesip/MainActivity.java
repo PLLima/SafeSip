@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
@@ -13,6 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.safesip.notifications.ReminderScheduler;
 import com.example.safesip.utils.Constants;
+
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Request permission to send notifications
+        runBackProcess();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)
                     != PackageManager.PERMISSION_GRANTED) {
@@ -86,6 +90,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    protected void onResume(){
+        super.onResume();
+        runBackProcess();
+    }
+
     @Override
     protected void onStop() {
         int scheduledHour;
@@ -105,5 +114,53 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         super.onStop();
+    }
+
+    void runBackProcess(){
+        LocalDate today = LocalDate.now();
+        SharedPreferences dataBase = getSharedPreferences("history", MODE_PRIVATE);
+        if (!dataBase.contains("year") || !dataBase.contains("month") || !dataBase.contains("day")) {
+            SharedPreferences.Editor editor = dataBase.edit();
+            editor.putString("year", String.valueOf(today.getYear()));
+            editor.putString("month", String.valueOf(today.getMonthValue()));
+            editor.putString("day", String.valueOf(today.getDayOfMonth()));
+            editor.putString("alcoolByDay", "0");
+            editor.putString("strike", "0");
+            editor.putString("alreadyDrankToday", "0");
+            editor.apply();
+            return;
+        }
+        String year = dataBase.getString("year", "1");
+        String month = dataBase.getString("month", "1");
+        String day = dataBase.getString("day", "1");
+        LocalDate lastDate = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
+        Log.d("MIDNIGHT_TEST", "Midnight executed!");
+        long diferenceDays = ChronoUnit.DAYS.between(lastDate, today);
+        if(!today.equals(lastDate)){
+            // verificar o streak e fazer tudo que precisa
+            //mudar o dia, mes e ano no DB para hoje
+            String alcoolByDay = dataBase.getString("alcoolByDay", "0");
+            String lastStreak = dataBase.getString("strike", "0");
+            Log.d("MIDNIGHT_TEST", "Midnight executed on a new day!");
+            String[] alcoolByDayArray = alcoolByDay.split(",");
+            int newStreak = 0;
+            if(alcoolByDayArray[alcoolByDayArray.length-1].equals("0")) newStreak = Math.toIntExact(Integer.parseInt(lastStreak) + diferenceDays);
+            else newStreak = Math.toIntExact(diferenceDays);
+            for(int i = 0 ; i < diferenceDays ; i++){
+                if(!alcoolByDay.isEmpty()) alcoolByDay += ",";
+                alcoolByDay += "0";
+            }
+            int todayDay = today.getDayOfMonth();
+            int todayMonth = today.getMonthValue();
+            int todayYear = today.getYear();
+            SharedPreferences.Editor editor = dataBase.edit();
+            editor.putString("strike", Integer.toString(newStreak));
+            editor.putString("day", Integer.toString(todayDay));
+            editor.putString("month", Integer.toString(todayMonth));
+            editor.putString("year", Integer.toString(todayYear));
+            editor.putString("alcoolByDay", alcoolByDay);
+            editor.putString("alreadyDrankToday", "0");
+            editor.apply();
+        }
     }
 }

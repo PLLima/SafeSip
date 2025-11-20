@@ -22,8 +22,6 @@
             android:name=".AdviceActivity"
             android:exported="false" />
 
-        <receiver android:name=".MidnightReceiver" />
-
         <activity android:name=".Graph" />
         <activity android:name=".MotivQuoteActivity" />
         <activity android:name=".PersonalInformation" />

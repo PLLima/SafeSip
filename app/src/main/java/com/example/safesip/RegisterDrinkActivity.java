@@ -189,7 +189,6 @@ public class RegisterDrinkActivity extends AppCompatActivity {
             }
             String alcoolByDay = dataBase.getString("alcoolByDay", "");
             String alreadyDrankToday = dataBase.getString("alreadyDrankToday", "0");
-
             String[] alcoolByDayArray =
                     alcoolByDay.isEmpty() ? new String[0] : alcoolByDay.split(",");
 
@@ -234,6 +233,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = dataBase.edit();
             editor.putString("alcoolByDay", newAlcoolByDay.toString());
             editor.putString("alcool", newAlcool.toString());
+            editor.putString("strike", "0");
             System.out.println(timesString);
             editor.putString("times", newTimes.toString());
             editor.apply();
