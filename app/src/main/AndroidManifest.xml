@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SafeSip">
         <activity
+            android:name=".WebviewActivity"
+            android:exported="false" />
+        <activity
             android:name=".MoreInfoActivity"
             android:exported="false" />
         <activity
