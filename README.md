@@ -31,7 +31,7 @@ It provides a simple and effective way to monitor daily intake, receive alerts w
 - **SharedPreferences** for persistent local storage
 - **BroadcastReceiver** for automatic midnight updates
 
-💡 Social Purpose
+## 💡 Social Purpose
 
 The SafeSip app was created to support individuals aiming to:
 
@@ -47,3 +47,9 @@ The SafeSip app was created to support individuals aiming to:
 
 No account or external tracking is required.
 All data stays private on the device.
+
+## 👥 Authors
+
+Developed by the following students of CentraleSupélec for the Coding Weeks:
+
+- Artur Bandeira Chan Jorge
