@@ -213,7 +213,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
 
 
     public void onClickAlcohol(View view) {
-        Intent intent = new Intent(getApplicationContext(), TooMuchAlcool.class);
+        Intent intent = new Intent(getApplicationContext(), TooMuchAlcohol.class);
         startActivity(intent);
     }
 
