@@ -9,6 +9,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.safesip.notifications.ReminderScheduler;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -82,6 +83,34 @@ public class Graph extends AppCompatActivity {
         legend.setEnabled(true);
         legend.setTextColor(Color.DKGRAY);
         chart.invalidate();
+    }
+
+    @Override
+    protected void onStop() {
+        String SETTINGS_FILE = "settings";
+        String SETTINGS_DAILY_REMINDER_SET = "daily-reminder-set";
+        String SETTINGS_DAILY_REMINDER_HOUR = "daily-reminder-hour";
+        String SETTINGS_DAILY_REMINDER_MINUTE = "daily-reminder-minute";
+        String PERSONAL_DATA_FILE = "personal-data";
+        String PERSONAL_DATA_SET_KEY = "personal-data-set";
+
+        int scheduledHour;
+        int scheduledMinute;
+
+        SharedPreferences prefs = getSharedPreferences(PERSONAL_DATA_FILE, MODE_PRIVATE);
+        boolean hasPersonalData = prefs.getBoolean(PERSONAL_DATA_SET_KEY, false);
+
+        // Re-add daily reminder everyday at a set hour if it wasn't set before in the same execution of the app
+        if (hasPersonalData) {
+            SharedPreferences settings = getSharedPreferences(SETTINGS_FILE, MODE_PRIVATE);
+            boolean isDailyReminderSet = settings.getBoolean(SETTINGS_DAILY_REMINDER_SET, false);
+            if(!isDailyReminderSet) {
+                scheduledHour = settings.getInt(SETTINGS_DAILY_REMINDER_HOUR, 12);
+                scheduledMinute = settings.getInt(SETTINGS_DAILY_REMINDER_MINUTE, 0);
+                ReminderScheduler.scheduleDailyReminder(this, scheduledHour, scheduledMinute);
+            }
+        }
+        super.onStop();
     }
 
     public void onClickBack(View view) {
