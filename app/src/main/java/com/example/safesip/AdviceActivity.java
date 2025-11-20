@@ -3,6 +3,7 @@ package com.example.safesip;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -34,6 +35,8 @@ public class AdviceActivity extends AppCompatActivity {
         TextView tv1 = findViewById(R.id.advise);
 
         tv1.setText(message);
+
+        tv1.setGravity(Gravity.CENTER);
 
         Button b3 = findViewById(R.id.button3);
 
