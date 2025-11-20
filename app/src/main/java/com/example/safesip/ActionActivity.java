@@ -14,9 +14,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.safesip.notifications.ReminderScheduler;
+
 public class ActionActivity extends AppCompatActivity {
 
-    private TextView StreakText;
     private Button TrackButton;
     private Button HistoryButton;
     private Button StatisticsButton;
@@ -33,8 +34,19 @@ public class ActionActivity extends AppCompatActivity {
         });
         SharedPreferences dataBase = getSharedPreferences("history", Context.MODE_PRIVATE);
         String streak = dataBase.getString("strike", "0");
-        StreakText = findViewById(R.id.StreakText);
-        StreakText.setText("You are on a " + streak + " days streak!");
+        TextView streakText = findViewById(R.id.StreakText);
+        CharSequence streakInformation = "You are on a " + streak;
+        switch (Integer.parseInt(streak)) {
+            case 0:
+                streakInformation += " days streak…";
+                break;
+            case 1:
+                streakInformation += " day streak" + "🔥!";
+                break;
+            default:
+                streakInformation += " days streak" + "🔥!";
+        }
+        streakText.setText(streakInformation);
         TrackButton = findViewById(R.id.TrackButton);
         HistoryButton = findViewById(R.id.HistoryButton);
         StatisticsButton = findViewById(R.id.StatisticsButton);
@@ -50,19 +62,51 @@ public class ActionActivity extends AppCompatActivity {
         });
 
         Button share = findViewById(R.id.share_button);
-        share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String message = "I’ve kept my alcohol-free streak for " + streak + " days! Proud of myself!";
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_TEXT, message);
-                startActivity(shareIntent);
+        share.setOnClickListener(v -> {
+            String message = "I’ve kept my alcohol-free streak for " + streak;
+            switch (Integer.parseInt(streak)) {
+                case 0:
+                    message += " days… I could have done better…";
+                    break;
+                case 1:
+                    message += " day! I'm proud of myself!";
+                    break;
+                default:
+                    message += " days! I'm proud of myself!";
             }
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, message);
+            startActivity(shareIntent);
         });
+    }
 
+    @Override
+    protected void onStop() {
+        String SETTINGS_FILE = "settings";
+        String SETTINGS_DAILY_REMINDER_SET = "daily-reminder-set";
+        String SETTINGS_DAILY_REMINDER_HOUR = "daily-reminder-hour";
+        String SETTINGS_DAILY_REMINDER_MINUTE = "daily-reminder-minute";
+        String PERSONAL_DATA_FILE = "personal-data";
+        String PERSONAL_DATA_SET_KEY = "personal-data-set";
 
+        int scheduledHour;
+        int scheduledMinute;
 
+        SharedPreferences prefs = getSharedPreferences(PERSONAL_DATA_FILE, MODE_PRIVATE);
+        boolean hasPersonalData = prefs.getBoolean(PERSONAL_DATA_SET_KEY, false);
+
+        // Re-add daily reminder everyday at a set hour if it wasn't set before in the same execution of the app
+        if (hasPersonalData) {
+            SharedPreferences settings = getSharedPreferences(SETTINGS_FILE, MODE_PRIVATE);
+            boolean isDailyReminderSet = settings.getBoolean(SETTINGS_DAILY_REMINDER_SET, false);
+            if(!isDailyReminderSet) {
+                scheduledHour = settings.getInt(SETTINGS_DAILY_REMINDER_HOUR, 12);
+                scheduledMinute = settings.getInt(SETTINGS_DAILY_REMINDER_MINUTE, 0);
+                ReminderScheduler.scheduleDailyReminder(this, scheduledHour, scheduledMinute);
+            }
+        }
+        super.onStop();
     }
 
     public void handleClick(View view) {
