@@ -170,6 +170,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
     @NonNull
     private Button getButton(String drink, String volume, String percentageDrink) {
         Button drinkButton = new Button(this);
+        drinkButton.setAllCaps(false);
         drinkButton.setText(drink + " " + volume + " mL " + percentageDrink + "%");
         drinkButton.setOnClickListener(v -> {
             SharedPreferences dataBase = getSharedPreferences("history", Context.MODE_PRIVATE);
