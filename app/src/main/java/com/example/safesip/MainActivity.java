@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private String PERSONAL_DATA_FILE;
     private String PERSONAL_DATA_SET_KEY;
     private String SETTINGS_FILE;
+    private String SETTINGS_DAILY_REMINDER_SET;
     private String SETTINGS_DAILY_REMINDER_HOUR;
     private String SETTINGS_DAILY_REMINDER_MINUTE;
 
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         SETTINGS_FILE = "settings";
+        SETTINGS_DAILY_REMINDER_SET = "daily-reminder-set";
         SETTINGS_DAILY_REMINDER_HOUR = "daily-reminder-hour";
         SETTINGS_DAILY_REMINDER_MINUTE = "daily-reminder-minute";
         PERSONAL_DATA_FILE = "personal-data";
@@ -67,27 +69,26 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MotivQuoteActivity.class);
                 startActivity(intent);
             });
+
+            // Add daily reminder everyday at a set hour
+            SharedPreferences settings = getSharedPreferences(SETTINGS_FILE, MODE_PRIVATE);
+            if (settings.contains(SETTINGS_DAILY_REMINDER_SET)) {
+                scheduledHour = settings.getInt(SETTINGS_DAILY_REMINDER_HOUR, 12);
+                scheduledMinute = settings.getInt(SETTINGS_DAILY_REMINDER_MINUTE, 30);
+            } else {
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putBoolean(SETTINGS_DAILY_REMINDER_SET, true);
+                editor.putInt(SETTINGS_DAILY_REMINDER_HOUR, scheduledHour);
+                editor.putInt(SETTINGS_DAILY_REMINDER_MINUTE, scheduledMinute);
+                editor.apply();
+            }
+            scheduleDailyReminder(scheduledHour, scheduledMinute);
         } else {
             welcomeButton.setText(R.string.welcome_screen_signup);
             welcomeButton.setOnClickListener(v -> {
                 Intent newActivity = new Intent(getApplicationContext(), PersonalInformation.class);
                 startActivity(newActivity);
             });
-        }
-
-        // Add daily reminder everyday at a set hour
-        if(hasPersonalData) {
-            SharedPreferences settings = getSharedPreferences(SETTINGS_FILE, MODE_PRIVATE);
-            if (settings.contains(SETTINGS_DAILY_REMINDER_HOUR)) {
-                scheduledHour = settings.getInt(SETTINGS_DAILY_REMINDER_HOUR, 12);
-                scheduledMinute = settings.getInt(SETTINGS_DAILY_REMINDER_MINUTE, 30);
-            } else {
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putInt(SETTINGS_DAILY_REMINDER_HOUR, scheduledHour);
-                editor.putInt(SETTINGS_DAILY_REMINDER_MINUTE, scheduledMinute);
-                editor.apply();
-            }
-            scheduleDailyReminder(scheduledHour, scheduledMinute);
         }
     }
 
@@ -99,12 +100,15 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(PERSONAL_DATA_FILE, MODE_PRIVATE);
         boolean hasPersonalData = prefs.getBoolean(PERSONAL_DATA_SET_KEY, false);
 
-        // Re-add daily reminder everyday at a set hour
+        // Re-add daily reminder everyday at a set hour if it wasn't set before in the same execution of the app
         if (hasPersonalData) {
             SharedPreferences settings = getSharedPreferences(SETTINGS_FILE, MODE_PRIVATE);
-            scheduledHour = settings.getInt(SETTINGS_DAILY_REMINDER_HOUR, 12);
-            scheduledMinute = settings.getInt(SETTINGS_DAILY_REMINDER_MINUTE, 0);
-            scheduleDailyReminder(scheduledHour, scheduledMinute);
+            boolean isDailyReminderSet = settings.getBoolean(SETTINGS_DAILY_REMINDER_SET, false);
+            if(!isDailyReminderSet) {
+                scheduledHour = settings.getInt(SETTINGS_DAILY_REMINDER_HOUR, 12);
+                scheduledMinute = settings.getInt(SETTINGS_DAILY_REMINDER_MINUTE, 0);
+                scheduleDailyReminder(scheduledHour, scheduledMinute);
+            }
         }
         super.onStop();
     }
@@ -135,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         WorkManager.getInstance(this)
                 .enqueueUniquePeriodicWork(
                         "daily_reminder",
-                        ExistingPeriodicWorkPolicy.UPDATE,
+                        ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE,
                         request
                 );
     }
