@@ -39,7 +39,7 @@ public class ActionActivity extends AppCompatActivity {
         HistoryButton = findViewById(R.id.HistoryButton);
         StatisticsButton = findViewById(R.id.StatisticsButton);
 
-        Button b4 = findViewById(R.id.more_info);
+        Button b4 = findViewById(R.id.buttonHelp);
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,5 +62,10 @@ public class ActionActivity extends AppCompatActivity {
             newActivity = new Intent(getApplicationContext(), Graph.class);
             startActivity(newActivity);
         }
+    }
+
+    public void onClick(View view) {
+        Intent intent = new Intent (getApplicationContext(), PersonalInformation.class);
+        startActivity(intent);
     }
 }
