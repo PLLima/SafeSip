@@ -34,7 +34,7 @@ It provides a simple and effective way to monitor daily intake, receive alerts w
 ## Screenshots
 ![welcome page](img/01-Welcome.png)
 
-![signup page](img/02-SignUp-.png)
+![signup page](img/02-SignUp.png)
 
 ![motivational page](img/03-Motivational.png)
 
@@ -42,7 +42,7 @@ It provides a simple and effective way to monitor daily intake, receive alerts w
 
 ![help page](img/05-Help.png)
 
-![statistics page](img/06-Statistics.png)
+![statistics page](img/06-Statistics.jpeg)
 
 ![history page](img/07-History.png)
 
