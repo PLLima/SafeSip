@@ -11,11 +11,9 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.safesip.notifications.ReminderScheduler;
+import com.example.safesip.utils.Advices;
 
 public class AdviceActivity extends AppCompatActivity {
 
@@ -29,12 +27,12 @@ public class AdviceActivity extends AppCompatActivity {
         String stamount = getIntent().getStringExtra("p");
         TextView tv = findViewById(R.id.resume);
 
-        tv.setText("The amount of alcohol in your blood is " + stamount + "g/L");
+        tv.setText("The amount of alcohol in your blood is " + stamount + "g/l");
 
         double amount = getIntent().getDoubleExtra("amount", 0);
 
 
-        String message = Conseil.getAllAdvices(amount);
+        String message = Advices.getAllAdvices(amount);
         TextView tv1 = findViewById(R.id.advise);
 
         tv1.setText(message);
@@ -43,12 +41,9 @@ public class AdviceActivity extends AppCompatActivity {
 
         Button b3 = findViewById(R.id.button3);
 
-        b3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AdviceActivity.this, MoreInfoActivity.class);
-                startActivity(intent);
-            }
+        b3.setOnClickListener(v -> {
+            Intent intent = new Intent(AdviceActivity.this, MoreInfoActivity.class);
+            startActivity(intent);
         });
 
 
@@ -80,5 +75,10 @@ public class AdviceActivity extends AppCompatActivity {
             }
         }
         super.onStop();
+    }
+
+    public void onClickBack(View view) {
+        Intent intent = new Intent(getApplicationContext(), RegisterDrinkActivity.class);
+        startActivity(intent);
     }
 }

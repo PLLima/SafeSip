@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#90EBD370"
+    android:background="#E8EEF5"
     tools:context=".ActionActivity">
 
     <LinearLayout
@@ -18,6 +18,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonHelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40sp"
+                android:backgroundTint="#2F5090"
+                android:text="Help ❓" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/backtoPersonalInformation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40sp"
+                android:backgroundTint="#2F5090"
+                android:onClick="onClick"
+                android:text="Change personal data ✏️" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/StreakText"
@@ -44,66 +68,49 @@
             android:orientation="vertical"
             android:paddingVertical="30sp">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/TrackButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10sp"
+                android:backgroundTint="#2F5090"
                 android:onClick="handleClick"
-                android:text="Track"
+                android:text="Track 📝"
                 android:textAlignment="center"
                 android:textSize="20sp" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/HistoryButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10sp"
                 android:onClick="handleClick"
-                android:text="History"
+                android:backgroundTint="#2F5090"
+                android:text="History 📅"
                 android:textAlignment="center"
                 android:textSize="20sp" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/StatisticsButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10sp"
+                android:backgroundTint="#2F5090"
                 android:onClick="handleClick"
-                android:text="Statistics"
+                android:text="Statistics 📈"
                 android:textAlignment="center"
                 android:textSize="20sp" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/share_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10sp"
-                android:text="Share my progress"
+                android:backgroundTint="#2F5090"
+                android:text="Share my progress 🔗"
                 android:textSize="20sp" />
         </LinearLayout>
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/buttonHelp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Help"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/backtoPersonalInformation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:onClick="onClick"
-        android:text="Change personal data"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

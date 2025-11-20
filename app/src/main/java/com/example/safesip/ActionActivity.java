@@ -35,32 +35,50 @@ public class ActionActivity extends AppCompatActivity {
         SharedPreferences dataBase = getSharedPreferences("history", Context.MODE_PRIVATE);
         String streak = dataBase.getString("strike", "0");
         TextView streakText = findViewById(R.id.StreakText);
-        CharSequence streakInformation = "You are on a " + streak + " days streak!";
+        CharSequence streakInformation = "You are on a " + streak;
+        switch (Integer.parseInt(streak)) {
+            case 0:
+                streakInformation += " days streak…";
+                break;
+            case 1:
+                streakInformation += " day streak" + "🔥!";
+                break;
+            default:
+                streakInformation += " days streak" + "🔥!";
+        }
         streakText.setText(streakInformation);
         TrackButton = findViewById(R.id.TrackButton);
         HistoryButton = findViewById(R.id.HistoryButton);
         StatisticsButton = findViewById(R.id.StatisticsButton);
 
         Button b4 = findViewById(R.id.buttonHelp);
-        b4.setOnClickListener(v -> {
-            Intent intent = new Intent(ActionActivity.this, MoreInfoActivity.class);
-            startActivity(intent);
+        b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActionActivity.this, MoreInfoActivity.class);
+                startActivity(intent);
+            }
+
         });
 
         Button share = findViewById(R.id.share_button);
-        share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String message = "I’ve kept my alcohol-free streak for " + streak + " days! Proud of myself!";
-                Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_TEXT, message);
-                startActivity(shareIntent);
+        share.setOnClickListener(v -> {
+            String message = "I’ve kept my alcohol-free streak for " + streak;
+            switch (Integer.parseInt(streak)) {
+                case 0:
+                    message += " days… I could have done better…";
+                    break;
+                case 1:
+                    message += " day! I'm proud of myself!";
+                    break;
+                default:
+                    message += " days! I'm proud of myself!";
             }
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, message);
+            startActivity(shareIntent);
         });
-
-
-
     }
 
     @Override

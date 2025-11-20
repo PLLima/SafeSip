@@ -69,7 +69,7 @@ public class TooMuchAlcohol extends AppCompatActivity {
             alcoolByDayArray = alcoolByDay.split(",");
         }
         float alcoolQuantity = (float) (Float.parseFloat(alcoolByDayArray[alcoolByDayArray.length-1]) * 0.789);
-        tv.setText(String.format("You drank %.2fg of alcohol today", alcoolQuantity));
+        tv.setText(String.format("You drank %.2fg of alcohol today.", alcoolQuantity));
         // Centrer le texte DANS le TextView
         tv.setGravity(Gravity.CENTER);
         String timeString = dataBase.getString("times", "0,0");
@@ -98,7 +98,7 @@ public class TooMuchAlcohol extends AppCompatActivity {
         System.out.println("recalc: " + percentageOfAlcoolInBlood);
         String bacFormatted = String.format("%.2f", percentageOfAlcoolInBlood);
         TextView tvPercentage = findViewById(R.id.PercentageTextView);
-        tvPercentage.setText("Now, you have " + bacFormatted + " g/L in your blood");
+        tvPercentage.setText("Now, you have " + bacFormatted + "g/l in your blood.");
         tvPercentage.setGravity(Gravity.CENTER);
 
         Button b1 = findViewById(R.id.button2);

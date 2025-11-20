@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3F8FF"
+    android:background="#E8EEF5"
     tools:context=".MainActivity">
 
 
@@ -40,8 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="20sp"
-            android:text="Enter"
-            android:backgroundTint="#3B71CA"/>
+            android:backgroundTint="#2F5090"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
