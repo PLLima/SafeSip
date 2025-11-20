@@ -9,7 +9,8 @@
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginHorizontal="10sp"
+        android:layout_marginVertical="10sp"
         android:backgroundTint="#2F5090"
         android:onClick="onClickBack"
         android:text="Back" />

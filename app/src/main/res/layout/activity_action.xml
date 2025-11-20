@@ -19,6 +19,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonHelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40sp"
+                android:backgroundTint="#2F5090"
+                android:text="Help ❓" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/backtoPersonalInformation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40sp"
+                android:backgroundTint="#2F5090"
+                android:onClick="onClick"
+                android:text="Change personal data ✏️" />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/StreakText"
             android:layout_width="wrap_content"
@@ -88,28 +112,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonHelp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#2F5090"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Help ❓"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/backtoPersonalInformation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#2F5090"
-        android:onClick="onClick"
-        android:text="Change personal data ✏️"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
