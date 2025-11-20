@@ -35,16 +35,14 @@ public class MoreInfoActivity extends AppCompatActivity {
         });
 
         Button btn2 = findViewById(R.id.open_help);
-        WebView helpWebView = findViewById(R.id.help_webview);
 
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MoreInfoActivity.this, WebviewActivity.class);
-                startActivity(intent);
-            }});
+        btn2.setOnClickListener(v -> {
+            String url = "https://www.alcool-info-service.fr/";
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
         }
+    );
 
 
 
-}
+}}
