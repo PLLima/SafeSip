@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
             int newStreak = 0;
             if(alcoolByDayArray[alcoolByDayArray.length-1].equals("0")) newStreak = Math.toIntExact(Integer.parseInt(lastStreak) + diferenceDays);
             else newStreak = Math.toIntExact(diferenceDays);
-            for(int i = 0 ; i < diferenceDays ; i++){
+            for(int i = 0 ; i < diferenceDays - 1 ; i++){
                 if(!alcoolByDay.isEmpty()) alcoolByDay += ",";
                 alcoolByDay += "0";
             }
