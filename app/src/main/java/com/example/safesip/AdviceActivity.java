@@ -11,9 +11,6 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.safesip.notifications.ReminderScheduler;
 
@@ -34,7 +31,7 @@ public class AdviceActivity extends AppCompatActivity {
         double amount = getIntent().getDoubleExtra("amount", 0);
 
 
-        String message = Conseil.getAllAdvices(amount);
+        String message = Advise.getAllAdvices(amount);
         TextView tv1 = findViewById(R.id.advise);
 
         tv1.setText(message);

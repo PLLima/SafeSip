@@ -2,9 +2,8 @@ package com.example.safesip;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-public class Conseil {
+public class Advise {
 
 
     private static List<String> advicesLow() {
@@ -108,14 +107,14 @@ public class Conseil {
 
 
 
-    public static String getAllAdvices(double bac) {
+    public static String getAllAdvices(double amount) {
 
         List<String> selectedAdvices;
 
-        if (bac < 0.3) selectedAdvices = advicesLow();
-        else if (bac < 0.6) selectedAdvices = advicesMedium();
-        else if (bac < 1.2) selectedAdvices = advicesHigh();
-        else if (bac < 2.0) selectedAdvices = advicesSevere();
+        if (amount < 0.3) selectedAdvices = advicesLow();
+        else if (amount < 0.6) selectedAdvices = advicesMedium();
+        else if (amount < 1.2) selectedAdvices = advicesHigh();
+        else if (amount < 2.0) selectedAdvices = advicesSevere();
         else selectedAdvices = advicesCritical();
 
         return listToText(selectedAdvices);
