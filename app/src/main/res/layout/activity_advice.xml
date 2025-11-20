@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="20sp"
-            android:paddingVertical="30sp"
+            android:paddingVertical="15sp"
             android:text="What should I do ?"
             android:textSize="30sp" />
 
@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="20sp"
-            android:paddingVertical="35sp"
+            android:paddingVertical="15sp"
             android:text="TextView"
             android:textSize="24sp" />
 
@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="30sp"
-            android:paddingVertical="30sp"
+            android:paddingVertical="15sp"
             android:text="TextView"
             android:textSize="20sp" />
 
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            android:paddingVertical="10sp">
+            android:paddingVertical="0sp">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button3"
