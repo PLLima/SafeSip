@@ -39,17 +39,17 @@ public class MidnightReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         SharedPreferences dataBase = context.getSharedPreferences("history", Context.MODE_PRIVATE);
-        String alreadyDrinkedToday = dataBase.getString("alreadyDrinkedToday", "0");
+        String alreadyDrankToday = dataBase.getString("alreadyDrankToday", "0");
         SharedPreferences.Editor editor = dataBase.edit();
         String alcoolByDay = dataBase.getString("alcoolByDay", "0");
-        if ("0".equals(alreadyDrinkedToday)) {
+        if ("0".equals(alreadyDrankToday)) {
             if (!alcoolByDay.isEmpty()) {
                 alcoolByDay += ",";
             }
             alcoolByDay += "0";
         }
         editor.putString("alcoolByDay", alcoolByDay);
-        editor.putString("alreadyDrinkedToday", "0");
+        editor.putString("alreadyDrankToday", "0");
         int strike = Integer.parseInt(dataBase.getString("strike", "0"));
         String[] alcoolByDayArray = alcoolByDay.split(",");
         if(alcoolByDayArray[alcoolByDayArray.length-1].equals("0")){
