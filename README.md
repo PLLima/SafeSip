@@ -52,5 +52,7 @@ All data stays private on the device.
 
 Developed by the following students of CentraleSupélec for the Coding Weeks:
 
-- Artur Bandeira Chan Jorge
-- Jared Bilstein
+- Artur Bandeira Chan Jorge\[[LinkedIn](https://www.linkedin.com/in/artur-bandeira-chan-jorge-b7646327a/)\]\[[Contact](mailto:arturbchanj@gmail.com)\]
+- Jared Bilstein\[[LinkedIn](https://www.linkedin.com/in/jared-bilstein-232b0b2a6/)\]\[[Contact](mailto:jared.bilstein@student-cs.fr)\]
+- Pedro Lubaszewski Lima\[[LinkedIn](https://www.linkedin.com/in/pedro-lubaszewski/)\]\[[Contact](mailto:pedro.lubaszewski.lima@gmail.com)\]
+- Sabrina Baloul\[[LinkedIn](https://www.linkedin.com/in/sabrina-baloul-1603a6310/)\]\[[Contact](mailto:sabrina.baloul@student-cs.fr)\]

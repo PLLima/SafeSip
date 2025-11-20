@@ -60,7 +60,7 @@ public class DailyReminderWorker extends Worker {
 
         // Action button
         NotificationCompat.Action action = new NotificationCompat.Action.Builder(
-                R.drawable.ic_launcher_foreground,
+                R.mipmap.safesip_foreground,
                 "Add Drink",
                 openAppIntent
         ).build();
@@ -75,7 +75,7 @@ public class DailyReminderWorker extends Worker {
 
         CharSequence contentText = "Don't forget to track how much you drank today!" + "🍺" + "🍷";
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId)
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setSmallIcon(R.mipmap.safesip)
                 .setContentTitle("Daily Reminder")
                 .setContentText(contentText)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)

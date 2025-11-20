@@ -1,22 +1,14 @@
 package com.example.safesip;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.View;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.safesip.notifications.ReminderScheduler;
 
@@ -43,10 +35,8 @@ public class MoreInfoActivity extends AppCompatActivity {
             String url = "https://www.alcool-info-service.fr/";
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(intent);
-        }
-    );
-
-}
+        });
+    }
 
     @Override
     protected void onStop() {
