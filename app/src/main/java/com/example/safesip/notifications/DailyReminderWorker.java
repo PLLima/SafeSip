@@ -1,4 +1,4 @@
-package com.example.safesip;
+package com.example.safesip.notifications;
 
 import android.Manifest;
 import android.app.NotificationChannel;
@@ -16,6 +16,9 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+import com.example.safesip.MotivQuoteActivity;
+import com.example.safesip.R;
+
 public class DailyReminderWorker extends Worker {
     public DailyReminderWorker(@NonNull Context context, @NonNull WorkerParameters params) {
         super(context, params);
@@ -29,10 +32,10 @@ public class DailyReminderWorker extends Worker {
         SharedPreferences prefs = getApplicationContext()
                 .getSharedPreferences(PERSONAL_DATA_FILE, Context.MODE_PRIVATE);
 
+        // Do nothing if there's no sign up information
         boolean enabled = prefs.getBoolean(PERSONAL_DATA_SET_KEY, true);
-        if (!enabled) {
-            return Result.success();  // Do nothing
-        }
+        if (!enabled)
+            return Result.success();
 
         showNotification();
         return Result.success();

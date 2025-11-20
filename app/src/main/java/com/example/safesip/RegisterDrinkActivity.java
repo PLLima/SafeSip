@@ -205,7 +205,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
             editor.putString("times", newTimes.toString());
             editor.apply();
 
-            Intent intent = new Intent(RegisterDrinkActivity.this, TooMuchAlcool.class);
+            Intent intent = new Intent(RegisterDrinkActivity.this, TooMuchAlcohol.class);
             startActivity(intent);
         });
         return drinkButton;
