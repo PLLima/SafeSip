@@ -39,7 +39,7 @@ public class ActionActivity extends AppCompatActivity {
         HistoryButton = findViewById(R.id.HistoryButton);
         StatisticsButton = findViewById(R.id.StatisticsButton);
 
-        Button b4 = findViewById(R.id.button4);
+        Button b4 = findViewById(R.id.more_info);
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
