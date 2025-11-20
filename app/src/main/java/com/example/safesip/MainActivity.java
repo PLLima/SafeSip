@@ -62,13 +62,13 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = getSharedPreferences(PERSONAL_DATA_FILE, MODE_PRIVATE);
         boolean hasPersonalData = prefs.getBoolean(PERSONAL_DATA_SET_KEY, false);
         if (hasPersonalData) {
-            welcomeButton.setText("Start");
+            welcomeButton.setText(R.string.welcome_screen_start);
             welcomeButton.setOnClickListener(v -> {
                 Intent intent = new Intent(getApplicationContext(), MotivQuoteActivity.class);
                 startActivity(intent);
             });
         } else {
-            welcomeButton.setText("Sign up");
+            welcomeButton.setText(R.string.welcome_screen_signup);
             welcomeButton.setOnClickListener(v -> {
                 Intent newActivity = new Intent(getApplicationContext(), PersonalInformation.class);
                 startActivity(newActivity);
