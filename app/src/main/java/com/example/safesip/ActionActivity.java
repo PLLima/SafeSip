@@ -16,7 +16,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class ActionActivity extends AppCompatActivity {
 
-    private TextView StreakText;
     private Button TrackButton;
     private Button HistoryButton;
     private Button StatisticsButton;
@@ -33,20 +32,17 @@ public class ActionActivity extends AppCompatActivity {
         });
         SharedPreferences dataBase = getSharedPreferences("history", Context.MODE_PRIVATE);
         String streak = dataBase.getString("strike", "0");
-        StreakText = findViewById(R.id.StreakText);
-        StreakText.setText("You are on a " + streak + " days streak!");
+        TextView streakText = findViewById(R.id.StreakText);
+        CharSequence streakInformation = "You are on a " + streak + " days streak!";
+        streakText.setText(streakInformation);
         TrackButton = findViewById(R.id.TrackButton);
         HistoryButton = findViewById(R.id.HistoryButton);
         StatisticsButton = findViewById(R.id.StatisticsButton);
 
         Button b4 = findViewById(R.id.buttonHelp);
-        b4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ActionActivity.this, MoreInfoActivity.class);
-                startActivity(intent);
-            }
-
+        b4.setOnClickListener(v -> {
+            Intent intent = new Intent(ActionActivity.this, MoreInfoActivity.class);
+            startActivity(intent);
         });
 
         Button share = findViewById(R.id.share_button);
