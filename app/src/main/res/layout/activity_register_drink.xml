@@ -47,7 +47,7 @@
         android:backgroundTint="#2F5090"
         android:ems="10"
         android:gravity="center"
-        android:hint="Drink"
+        android:hint="Type of drink"
         android:inputType="text" />
 
     <EditText
@@ -57,7 +57,7 @@
         android:layout_gravity="center"
         android:ems="10"
         android:gravity="center"
-        android:hint="Amount"
+        android:hint="Amount (ml)"
         android:inputType="numberDecimal" />
 
     <EditText
@@ -67,7 +67,7 @@
         android:layout_gravity="center"
         android:ems="10"
         android:gravity="center"
-        android:hint="Percentage"
+        android:hint="Alcohol percentage (%)"
         android:inputType="numberDecimal" />
 
     <com.google.android.material.button.MaterialButton

@@ -30,6 +30,15 @@
             android:paddingVertical="30sp"
             android:text="Your History 🕒"
             android:textSize="32sp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20sp"
+            android:paddingVertical="60sp"
+            android:text="*1 portion of alcohol equals 10 g of pure alcohol. This is approximately: 250 ml of beer (5%), 100 ml of wine (12%), or 30 ml of spirits (40%)."
+            android:textSize="20sp" />
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -39,6 +48,7 @@
         android:backgroundTint="#2F5090"
         android:layout_margin="16dp"
         android:onClick="onClickBack"
-        android:text="Back" />
+        android:text="Back"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
