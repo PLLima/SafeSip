@@ -5,14 +5,13 @@ import java.util.List;
 
 public class Advise {
 
-
     private static List<String> advicesLow() {
         List<String> list = new ArrayList<>();
         list.add("⭐ WHAT YOU SHOULD KNOW:");
         list.add("You are still mostly sober but alcohol has started entering your bloodstream.");
         list.add("Effects can rise quickly depending on your body and what you ate.\n");
 
-        list.add("🟢 WHAT YOU SHOULD DO:");
+        list.add("➡️ WHAT YOU SHOULD DO:");
         list.add("Drink a glass of water to stay hydrated.");
         list.add("Eat something small to slow alcohol absorption.");
         list.add("Take your time between drinks.\n");
@@ -29,7 +28,7 @@ public class Advise {
         list.add("You may feel relaxed or more social.");
         list.add("Your reaction time is already slower.\n");
 
-        list.add("🟢 WHAT YOU SHOULD DO:");
+        list.add("➡️ WHAT YOU SHOULD DO:");
         list.add("Drink water regularly.");
         list.add("Eat something to help your body process alcohol.");
         list.add("Take a break from drinking for a while.\n");
@@ -46,7 +45,7 @@ public class Advise {
         list.add("You may feel euphoric, light-headed, or unsteady.");
         list.add("Coordination and judgment are significantly reduced.\n");
 
-        list.add("🟢 WHAT YOU SHOULD DO:");
+        list.add("➡️ WHAT YOU SHOULD DO:");
         list.add("Drink a big glass of water.");
         list.add("Stop drinking alcohol for now.");
         list.add("Sit down if you feel dizzy.");
@@ -66,7 +65,7 @@ public class Advise {
         list.add("You may feel nausea, blurry vision, dizziness, or confusion.");
         list.add("Your balance and judgment are heavily impaired. \n");
 
-        list.add("🟢 WHAT YOU SHOULD DO:");
+        list.add("➡️ WHAT YOU SHOULD DO:");
         list.add("Stop drinking immediately.");
         list.add("Drink water slowly.");
         list.add("Stay with someone you trust.");
@@ -88,7 +87,7 @@ public class Advise {
         list.add("This is a dangerous level: risk of alcohol poisoning.");
         list.add("You may experience confusion, vomiting, or trouble standing.\n");
 
-        list.add("🟢 WHAT YOU SHOULD DO:");
+        list.add("➡️ WHAT YOU SHOULD DO:");
         list.add("Stop drinking immediately.");
         list.add("Drink water slowly if you are conscious.");
         list.add("Stay with someone — do not be alone.");
