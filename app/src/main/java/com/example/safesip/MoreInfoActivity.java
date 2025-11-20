@@ -46,6 +46,8 @@ public class MoreInfoActivity extends AppCompatActivity {
         }
     );
 
+}
+
     @Override
     protected void onStop() {
         String SETTINGS_FILE = "settings";
@@ -74,4 +76,9 @@ public class MoreInfoActivity extends AppCompatActivity {
         super.onStop();
     }
 
-}}
+    public void onClickBack(View view) {
+        Intent intent = new Intent(getApplicationContext(), ActionActivity.class);
+        startActivity(intent);
+    }
+
+}

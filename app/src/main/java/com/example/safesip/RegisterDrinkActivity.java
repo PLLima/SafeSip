@@ -39,7 +39,7 @@ public class RegisterDrinkActivity extends AppCompatActivity {
         }
         String strike = dataBase.getString("strike", "0");
         Button b = findViewById(R.id.alcoholButton);
-        b.setText("How much alcohol do I have in my blood?");
+        b.setText("Check my alcohol level \uD83E\uDDEA");
         MidnightScheduler.scheduleNextMidnight(this);
     }
 

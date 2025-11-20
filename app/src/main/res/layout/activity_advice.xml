@@ -12,9 +12,9 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24sp"
-        android:textSize="30sp"
+        android:layout_marginTop="80dp"
         android:text="What should I do ?"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -42,6 +42,22 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resume" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/backButton"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#2F5090"
+        android:onClick="onClickBack"
+        android:text="Back"
+        app:layout_constraintBottom_toTopOf="@+id/ThankYouTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UnknownIdInLayout" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button3"
