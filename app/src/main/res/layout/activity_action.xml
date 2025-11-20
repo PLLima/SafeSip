@@ -77,4 +77,11 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/bakctoPersonalInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="Change Personal Information" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -53,4 +53,9 @@ public class ActionActivity extends AppCompatActivity {
             startActivity(newActivity);
         }
     }
+
+    public void onClick(View view) {
+        Intent intent = new Intent (getApplicationContext(), PersonalInformation.class);
+        startActivity(intent);
+    }
 }
