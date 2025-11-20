@@ -98,7 +98,7 @@ public class TooMuchAlcohol extends AppCompatActivity {
         System.out.println("recalc: " + percentageOfAlcoolInBlood);
         String bacFormatted = String.format("%.2f", percentageOfAlcoolInBlood);
         TextView tvPercentage = findViewById(R.id.PercentageTextView);
-        tvPercentage.setText("Now, you have " + bacFormatted + " g/L in your blood.");
+        tvPercentage.setText("Now, you have " + bacFormatted + "g/l in your blood.");
         tvPercentage.setGravity(Gravity.CENTER);
 
         Button b1 = findViewById(R.id.button2);
