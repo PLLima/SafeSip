@@ -10,15 +10,9 @@ import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.work.ExistingPeriodicWorkPolicy;
-import androidx.work.PeriodicWorkRequest;
-import androidx.work.WorkManager;
 
-import com.example.safesip.notifications.DailyReminderWorker;
+import com.example.safesip.notifications.ReminderScheduler;
 import com.example.safesip.utils.Constants;
-
-import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -82,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 editor.putInt(SETTINGS_DAILY_REMINDER_MINUTE, scheduledMinute);
                 editor.apply();
             }
-            scheduleDailyReminder(scheduledHour, scheduledMinute);
+            ReminderScheduler.scheduleDailyReminder(this, scheduledHour, scheduledMinute);
         } else {
             welcomeButton.setText(R.string.welcome_screen_signup);
             welcomeButton.setOnClickListener(v -> {
@@ -107,40 +101,9 @@ public class MainActivity extends AppCompatActivity {
             if(!isDailyReminderSet) {
                 scheduledHour = settings.getInt(SETTINGS_DAILY_REMINDER_HOUR, 12);
                 scheduledMinute = settings.getInt(SETTINGS_DAILY_REMINDER_MINUTE, 0);
-                scheduleDailyReminder(scheduledHour, scheduledMinute);
+                ReminderScheduler.scheduleDailyReminder(this, scheduledHour, scheduledMinute);
             }
         }
         super.onStop();
-    }
-
-    public void scheduleDailyReminder(int hour, int minute) {
-
-        long currentTime = System.currentTimeMillis();
-
-        Calendar now = Calendar.getInstance();
-        Calendar next = Calendar.getInstance();
-
-        next.set(Calendar.HOUR_OF_DAY, hour);
-        next.set(Calendar.MINUTE, minute);
-        next.set(Calendar.SECOND, 0);
-
-        if (next.before(now)) {
-            next.add(Calendar.DAY_OF_MONTH, 1);
-        }
-
-        long initialDelay = next.getTimeInMillis() - currentTime;
-
-        WorkManager.getInstance(this).cancelUniqueWork("daily_reminder");
-        PeriodicWorkRequest request =
-                new PeriodicWorkRequest.Builder(DailyReminderWorker.class, 24, TimeUnit.HOURS)
-                        .setInitialDelay(initialDelay, TimeUnit.MILLISECONDS)
-                        .build();
-
-        WorkManager.getInstance(this)
-                .enqueueUniquePeriodicWork(
-                        "daily_reminder",
-                        ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE,
-                        request
-                );
     }
 }
