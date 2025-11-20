@@ -30,7 +30,7 @@ public class TooMuchAlcohol extends AppCompatActivity {
     public void updateScreen(){
         TextView tv = findViewById(R.id.AlcoolQuantityTextView);
         SharedPreferences dataBase = getSharedPreferences("history", Context.MODE_PRIVATE);
-        String alcoolByDay = dataBase.getString("alcoolByDay", "0");
+        String alcoolByDay = dataBase.getString("alcoolByDay", "0,0");
         String[] alcoolByDayArray;
         if (alcoolByDay.trim().isEmpty()) {
             alcoolByDayArray = new String[]{"0"};
@@ -41,8 +41,8 @@ public class TooMuchAlcohol extends AppCompatActivity {
         tv.setText("You have drank " + Float.toString(alcoolQuantity) + "g of alcohol today");
         // Centrer le texte DANS le TextView
         tv.setGravity(Gravity.CENTER);
-        String timeString = dataBase.getString("times", "0");
-        String alcoolString = dataBase.getString("alcool", "0");
+        String timeString = dataBase.getString("times", "0,0");
+        String alcoolString = dataBase.getString("alcool", "0,0");
         SharedPreferences personalDataBase = getSharedPreferences("personal-data", MODE_PRIVATE);
         String sex = personalDataBase.getString("sex", "Male");
         double distributionFactor = 0;
@@ -54,9 +54,14 @@ public class TooMuchAlcohol extends AppCompatActivity {
         String[] alcoolStringArray = alcoolString.split(",");
         float mass = personalDataBase.getFloat("weight", 0);
         double percentageOfAlcoolInBlood = 0;
-        for(int i = 0 ; i < timeStringArray.length ; i++){
-            int timeInMinuts = minuts - Integer.parseInt(timeStringArray[i]);
-            percentageOfAlcoolInBlood += ((Double.parseDouble(alcoolStringArray[i])*0.789)/(distributionFactor * mass)) - (((0.015*timeInMinuts))/60);
+        if(timeString.isEmpty()){
+            percentageOfAlcoolInBlood = 0;
+        }
+        else {
+            for (int i = 0; i < timeStringArray.length; i++) {
+                int timeInMinuts = minuts - Integer.parseInt(timeStringArray[i]);
+                percentageOfAlcoolInBlood += ((Double.parseDouble(alcoolStringArray[i]) * 0.789) / (distributionFactor * mass)) - (((0.015 * timeInMinuts)) / 60);
+            }
         }
         if(percentageOfAlcoolInBlood < 0) percentageOfAlcoolInBlood = 0;
         System.out.println("recalc: " + percentageOfAlcoolInBlood);
