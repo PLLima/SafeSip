@@ -31,6 +31,29 @@ It provides a simple and effective way to monitor daily intake, receive alerts w
 - **SharedPreferences** for persistent local storage
 - **BroadcastReceiver** for automatic midnight updates
 
+## Screenshots
+![welcome page](img/01-Welcome.png)
+
+![signup page](img/02-SignUp-.png)
+
+![motivational page](img/03-Motivational.png)
+
+![action page](img/04-Action.png)
+
+![help page](img/05-Help.png)
+
+![statistics page](img/06-Statistics.png)
+
+![history page](img/07-History.png)
+
+![register drink page](img/08-RegisterDrink.png)
+
+![drink registered page](img/09-DrinkRegistered.png)
+
+![advice page](img/10-Advice.png)
+
+![daily notification](img/11-Notification.png)
+
 ## Social Purpose
 
 The SafeSip app was created to support individuals aiming to:
