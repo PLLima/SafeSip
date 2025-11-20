@@ -137,8 +137,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d("MIDNIGHT_TEST", "Midnight executed!");
         long diferenceDays = ChronoUnit.DAYS.between(lastDate, today);
         if(!today.equals(lastDate)){
-            // verificar o streak e fazer tudo que precisa
-            //mudar o dia, mes e ano no DB para hoje
             String alcoolByDay = dataBase.getString("alcoolByDay", "0");
             String lastStreak = dataBase.getString("strike", "0");
             Log.d("MIDNIGHT_TEST", "Midnight executed on a new day!");
