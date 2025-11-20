@@ -13,7 +13,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.safesip.notifications.ReminderScheduler;
-import com.example.safesip.utils.Conseil;
+import com.example.safesip.utils.Advices;
 
 public class AdviceActivity extends AppCompatActivity {
 
@@ -32,7 +32,7 @@ public class AdviceActivity extends AppCompatActivity {
         double amount = getIntent().getDoubleExtra("amount", 0);
 
 
-        String message = Advise.getAllAdvices(amount);
+        String message = Advices.getAllAdvices(amount);
         TextView tv1 = findViewById(R.id.advise);
 
         tv1.setText(message);

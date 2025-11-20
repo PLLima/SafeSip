@@ -3,7 +3,7 @@ package com.example.safesip.utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Advise {
+public class Advices {
 
     private static List<String> advicesLow() {
         List<String> list = new ArrayList<>();
