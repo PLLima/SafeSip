@@ -78,7 +78,7 @@
         android:layout_margin="16sp"
         android:backgroundTint="#2F5090"
         android:onClick="onClickRegister"
-        android:text="Register drink ➕" />
+        android:text="Save drink ➕" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/undrink"

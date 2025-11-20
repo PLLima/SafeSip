@@ -11,16 +11,16 @@ public class Conseil {
         List<String> list = new ArrayList<>();
         list.add("⭐ WHAT YOU SHOULD KNOW:");
         list.add("You are still mostly sober but alcohol has started entering your bloodstream.");
-        list.add("Effects can rise quickly depending on your body and what you ate.");
+        list.add("Effects can rise quickly depending on your body and what you ate.\n");
 
         list.add("🟢 WHAT YOU SHOULD DO:");
         list.add("Drink a glass of water to stay hydrated.");
         list.add("Eat something small to slow alcohol absorption.");
-        list.add("Take your time between drinks.");
+        list.add("Take your time between drinks.\n");
 
         list.add("❌ WHAT YOU SHOULD NOT DO:");
         list.add("Do not drink too fast.");
-        list.add("Do not drink on an empty stomach.");
+        list.add("Do not drink on an empty stomach.\n");
         return list;
     }
 
@@ -28,12 +28,12 @@ public class Conseil {
         List<String> list = new ArrayList<>();
         list.add("⭐ WHAT YOU SHOULD KNOW:");
         list.add("You may feel relaxed or more social.");
-        list.add("Your reaction time is already slower.");
+        list.add("Your reaction time is already slower.\n");
 
         list.add("🟢 WHAT YOU SHOULD DO:");
         list.add("Drink water regularly.");
         list.add("Eat something to help your body process alcohol.");
-        list.add("Take a break from drinking for a while.");
+        list.add("Take a break from drinking for a while.\n");
 
         list.add("❌ WHAT YOU SHOULD NOT DO:");
         list.add("Do not drive — your reflexes are already impaired.");
@@ -45,13 +45,13 @@ public class Conseil {
         List<String> list = new ArrayList<>();
         list.add("⭐ WHAT YOU SHOULD KNOW:");
         list.add("You may feel euphoric, light-headed, or unsteady.");
-        list.add("Coordination and judgment are significantly reduced.");
+        list.add("Coordination and judgment are significantly reduced.\n");
 
         list.add("🟢 WHAT YOU SHOULD DO:");
         list.add("Drink a big glass of water.");
         list.add("Stop drinking alcohol for now.");
         list.add("Sit down if you feel dizzy.");
-        list.add("Eat something to stabilize yourself.");
+        list.add("Eat something to stabilize yourself.\n");
 
         list.add("❌ WHAT YOU SHOULD NOT DO:");
         list.add("Do not drive under any circumstances.");
@@ -65,14 +65,14 @@ public class Conseil {
         List<String> list = new ArrayList<>();
         list.add("⭐ WHAT YOU SHOULD KNOW:");
         list.add("You may feel nausea, blurry vision, dizziness, or confusion.");
-        list.add("Your balance and judgment are heavily impaired.");
+        list.add("Your balance and judgment are heavily impaired. \n");
 
         list.add("🟢 WHAT YOU SHOULD DO:");
         list.add("Stop drinking immediately.");
         list.add("Drink water slowly.");
         list.add("Stay with someone you trust.");
         list.add("Sit down to avoid falls.");
-        list.add("Rest in a calm and safe place.");
+        list.add("Rest in a calm and safe place.\n");
 
         list.add("❌ WHAT YOU SHOULD NOT DO:");
         list.add("Do not drive or operate anything.");
@@ -87,14 +87,14 @@ public class Conseil {
         List<String> list = new ArrayList<>();
         list.add("⭐ WHAT YOU SHOULD KNOW:");
         list.add("This is a dangerous level: risk of alcohol poisoning.");
-        list.add("You may experience confusion, vomiting, or trouble standing.");
+        list.add("You may experience confusion, vomiting, or trouble standing.\n");
 
         list.add("🟢 WHAT YOU SHOULD DO:");
         list.add("Stop drinking immediately.");
         list.add("Drink water slowly if you are conscious.");
         list.add("Stay with someone — do not be alone.");
         list.add("Sit or lie on your side to avoid choking if you vomit.");
-        list.add("Seek medical help if you feel very unwell or faint.");
+        list.add("Seek medical help if you feel very unwell or faint.\n");
 
         list.add("❌ WHAT YOU SHOULD NOT DO:");
         list.add("Do not drive.");

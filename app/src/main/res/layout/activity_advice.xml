@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="50sp"
+        android:layout_marginTop="45sp"
         android:layout_marginEnd="16dp"
         android:paddingHorizontal="20sp"
         android:text="TextView"
