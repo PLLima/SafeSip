@@ -58,6 +58,8 @@ public class TooMuchAlcohol extends AppCompatActivity {
             int timeInMinuts = minuts - Integer.parseInt(timeStringArray[i]);
             percentageOfAlcoolInBlood += ((Double.parseDouble(alcoolStringArray[i])*0.789)/(distributionFactor * mass)) - (((0.015*timeInMinuts))/60);
         }
+        if(percentageOfAlcoolInBlood < 0) percentageOfAlcoolInBlood = 0;
+        System.out.println("recalc: " + percentageOfAlcoolInBlood);
         String bacFormatted = String.format("%.2f", percentageOfAlcoolInBlood);
         TextView tvPercentage = findViewById(R.id.PercentageTextView);
         tvPercentage.setText("Now, you have " + bacFormatted + " g/L in your blood");
