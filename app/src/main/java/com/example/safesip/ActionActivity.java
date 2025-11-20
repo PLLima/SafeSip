@@ -48,6 +48,21 @@ public class ActionActivity extends AppCompatActivity {
             }
 
         });
+
+        Button share = findViewById(R.id.share_button);
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = "I’ve kept my alcohol-free streak for " + streak + " days! Proud of myself!";
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_TEXT, message);
+                startActivity(shareIntent);
+            }
+        });
+
+
+
     }
 
     public void handleClick(View view) {
