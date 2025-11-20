@@ -53,3 +53,4 @@ All data stays private on the device.
 Developed by the following students of CentraleSupélec for the Coding Weeks:
 
 - Artur Bandeira Chan Jorge
+- Jared Bilstein
