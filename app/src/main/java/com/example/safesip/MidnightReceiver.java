@@ -49,7 +49,7 @@ public class MidnightReceiver extends BroadcastReceiver {
             }
             alcoolByDay += "0";
         }
-        Log.d("MIDNIGHT_TEST", "MidnightReceiver executado!");
+        Log.d("MIDNIGHT_TEST", "MidnightReceiver executed!");
         editor.putString("alcoolByDay", alcoolByDay);
         editor.putString("alreadyDrankToday", "0");
         int strike = Integer.parseInt(dataBase.getString("strike", "0"));
