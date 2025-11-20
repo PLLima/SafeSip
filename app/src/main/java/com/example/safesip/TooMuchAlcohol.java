@@ -19,7 +19,7 @@ public class TooMuchAlcohol extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_too_much_alcool);
+        setContentView(R.layout.activity_too_much_alcohol);
         updateScreen();
     }
     protected void onResume(){
@@ -65,7 +65,7 @@ public class TooMuchAlcohol extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TooMuchAlcool.this, AdviceActivity.class);
+                Intent intent = new Intent(TooMuchAlcohol.this, AdviceActivity.class);
                 intent.putExtra("amount", finalPercentageOfAlcoolInBlood);
                 intent.putExtra("p", bacFormatted);
                 startActivity(intent);

@@ -31,7 +31,7 @@
         <activity android:name=".PersonalInformation" />
         <activity android:name=".ActionActivity" />
         <activity android:name=".RegisterDrinkActivity" />
-        <activity android:name=".TooMuchAlcool" />
+        <activity android:name=".TooMuchAlcohol" />
         <activity android:name=".HistoryActivity" />
         <activity
             android:name=".MainActivity"
