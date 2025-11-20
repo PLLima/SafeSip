@@ -6,6 +6,7 @@ import android.content.Intent;
 import java.util.Calendar;
 import android.content.BroadcastReceiver;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 class MidnightScheduler {
     public static void scheduleNextMidnight(Context context) {
@@ -48,6 +49,7 @@ public class MidnightReceiver extends BroadcastReceiver {
             }
             alcoolByDay += "0";
         }
+        Log.d("MIDNIGHT_TEST", "MidnightReceiver executado!");
         editor.putString("alcoolByDay", alcoolByDay);
         editor.putString("alreadyDrankToday", "0");
         int strike = Integer.parseInt(dataBase.getString("strike", "0"));
@@ -65,4 +67,3 @@ public class MidnightReceiver extends BroadcastReceiver {
         MidnightScheduler.scheduleNextMidnight(context);
     }
 }
-
