@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -204,6 +205,10 @@ public class RegisterDrinkActivity extends AppCompatActivity {
             System.out.println(timesString);
             editor.putString("times", newTimes.toString());
             editor.apply();
+
+
+            Toast.makeText(RegisterDrinkActivity.this, "Thanks for registering :)", Toast.LENGTH_SHORT).show();
+
 
             Intent intent = new Intent(RegisterDrinkActivity.this, TooMuchAlcohol.class);
             startActivity(intent);
