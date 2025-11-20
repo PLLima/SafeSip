@@ -20,6 +20,8 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.safesip.notifications.ReminderScheduler;
+
 import java.time.LocalTime;
 import java.util.Map;
 
@@ -39,6 +41,34 @@ public class RegisterDrinkActivity extends AppCompatActivity {
         Button b = findViewById(R.id.alcoholButton);
         b.setText("How much alcohol do I have in my blood?");
         MidnightScheduler.scheduleNextMidnight(this);
+    }
+
+    @Override
+    protected void onStop() {
+        String SETTINGS_FILE = "settings";
+        String SETTINGS_DAILY_REMINDER_SET = "daily-reminder-set";
+        String SETTINGS_DAILY_REMINDER_HOUR = "daily-reminder-hour";
+        String SETTINGS_DAILY_REMINDER_MINUTE = "daily-reminder-minute";
+        String PERSONAL_DATA_FILE = "personal-data";
+        String PERSONAL_DATA_SET_KEY = "personal-data-set";
+
+        int scheduledHour;
+        int scheduledMinute;
+
+        SharedPreferences prefs = getSharedPreferences(PERSONAL_DATA_FILE, MODE_PRIVATE);
+        boolean hasPersonalData = prefs.getBoolean(PERSONAL_DATA_SET_KEY, false);
+
+        // Re-add daily reminder everyday at a set hour if it wasn't set before in the same execution of the app
+        if (hasPersonalData) {
+            SharedPreferences settings = getSharedPreferences(SETTINGS_FILE, MODE_PRIVATE);
+            boolean isDailyReminderSet = settings.getBoolean(SETTINGS_DAILY_REMINDER_SET, false);
+            if(!isDailyReminderSet) {
+                scheduledHour = settings.getInt(SETTINGS_DAILY_REMINDER_HOUR, 12);
+                scheduledMinute = settings.getInt(SETTINGS_DAILY_REMINDER_MINUTE, 0);
+                ReminderScheduler.scheduleDailyReminder(this, scheduledHour, scheduledMinute);
+            }
+        }
+        super.onStop();
     }
 
     public void onClickRegister(View view) {
