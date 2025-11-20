@@ -108,7 +108,8 @@ public class RegisterDrinkActivity extends AppCompatActivity {
             row.setGravity(Gravity.CENTER);
             SharedPreferences dbDrink = getSharedPreferences(drink, MODE_PRIVATE);
             String volume = dbDrink.getString("amount", "");
-            Button drinkButton = getButton(drink, volume);
+            String percentageDrink = dbDrink.getString("percentage", "");
+            Button drinkButton = getButton(drink, volume, percentageDrink);
             Button removeDrink = new Button(this);
             removeDrink.setText("-");
             removeDrink.setOnClickListener(v -> {
@@ -137,9 +138,9 @@ public class RegisterDrinkActivity extends AppCompatActivity {
     }
 
     @NonNull
-    private Button getButton(String drink, String volume) {
+    private Button getButton(String drink, String volume, String percentageDrink) {
         Button drinkButton = new Button(this);
-        drinkButton.setText(drink + " " + volume + " mL");
+        drinkButton.setText(drink + " " + volume + " mL " + percentageDrink + "%");
         drinkButton.setOnClickListener(v -> {
             SharedPreferences dataBase = getSharedPreferences("history", Context.MODE_PRIVATE);
             String timesString = dataBase.getString("times", "");
