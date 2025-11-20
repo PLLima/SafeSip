@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#90EBD370"
+    android:background="#E8EEF5"
     tools:context=".MoreInfoActivity">
 
     <LinearLayout
@@ -36,19 +36,21 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/emergency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#2F5090"
                 android:layout_marginHorizontal="20sp"
-                android:text="Call 112" />
+                android:text="Call 112 🆘" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/open_help"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#2F5090"
                 android:layout_marginHorizontal="20sp"
-                android:text="Help and other ressources" />
+                android:text="Help and other ressources 🌐" />
         </LinearLayout>
 
     </LinearLayout>

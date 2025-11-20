@@ -6,63 +6,106 @@ import java.util.Random;
 
 public class Conseil {
 
-    private static final Random random = new Random();
-
 
     private static List<String> advicesLow() {
         List<String> list = new ArrayList<>();
-        list.add("Drink slowly and enjoy your night 💛");
-        list.add("Don’t forget to stay hydrated.");
-        list.add("Take a short break between drinks.");
-        list.add("Eat something small to help your body.");
+        list.add("⭐ WHAT YOU SHOULD KNOW:");
+        list.add("You are still mostly sober but alcohol has started entering your bloodstream.");
+        list.add("Effects can rise quickly depending on your body and what you ate.");
+
+        list.add("🟢 WHAT YOU SHOULD DO:");
+        list.add("Drink a glass of water to stay hydrated.");
+        list.add("Eat something small to slow alcohol absorption.");
+        list.add("Take your time between drinks.");
+
+        list.add("❌ WHAT YOU SHOULD NOT DO:");
+        list.add("Do not drink too fast.");
+        list.add("Do not drink on an empty stomach.");
         return list;
     }
 
     private static List<String> advicesMedium() {
         List<String> list = new ArrayList<>();
-        list.add("Drink a full glass of water.");
-        list.add("Slow down and take a small break.");
-        list.add("Stay close to your friends.");
-        list.add("Try switching to non-alcoholic drinks.");
+        list.add("⭐ WHAT YOU SHOULD KNOW:");
+        list.add("You may feel relaxed or more social.");
+        list.add("Your reaction time is already slower.");
+
+        list.add("🟢 WHAT YOU SHOULD DO:");
+        list.add("Drink water regularly.");
+        list.add("Eat something to help your body process alcohol.");
+        list.add("Take a break from drinking for a while.");
+
+        list.add("❌ WHAT YOU SHOULD NOT DO:");
+        list.add("Do not drive — your reflexes are already impaired.");
+        list.add("Do not mix alcohol with medications.");
         return list;
     }
 
     private static List<String> advicesHigh() {
         List<String> list = new ArrayList<>();
-        list.add("You should stop drinking now.");
-        list.add("Drink water slowly to avoid nausea.");
-        list.add("Sit down and relax for a while.");
-        list.add("Eat something soft like bread or crackers.");
+        list.add("⭐ WHAT YOU SHOULD KNOW:");
+        list.add("You may feel euphoric, light-headed, or unsteady.");
+        list.add("Coordination and judgment are significantly reduced.");
+
+        list.add("🟢 WHAT YOU SHOULD DO:");
+        list.add("Drink a big glass of water.");
+        list.add("Stop drinking alcohol for now.");
+        list.add("Sit down if you feel dizzy.");
+        list.add("Eat something to stabilize yourself.");
+
+        list.add("❌ WHAT YOU SHOULD NOT DO:");
+        list.add("Do not drive under any circumstances.");
+        list.add("Do not do physical activities — risk of injury is high.");
+        list.add("Do not continue drinking quickly.");
+
         return list;
     }
 
     private static List<String> advicesSevere() {
         List<String> list = new ArrayList<>();
+        list.add("⭐ WHAT YOU SHOULD KNOW:");
+        list.add("You may feel nausea, blurry vision, dizziness, or confusion.");
+        list.add("Your balance and judgment are heavily impaired.");
+
+        list.add("🟢 WHAT YOU SHOULD DO:");
         list.add("Stop drinking immediately.");
-        list.add("Drink small sips of water.");
-        list.add("Stay seated and avoid walking.");
-        list.add("Let someone stay with you; don’t be alone.");
+        list.add("Drink water slowly.");
+        list.add("Stay with someone you trust.");
+        list.add("Sit down to avoid falls.");
+        list.add("Rest in a calm and safe place.");
+
+        list.add("❌ WHAT YOU SHOULD NOT DO:");
+        list.add("Do not drive or operate anything.");
+        list.add("Do not walk alone.");
+        list.add("Do not mix alcohol with any drug or medication.");
+        list.add("Do not make important decisions.");
+
         return list;
     }
 
     private static List<String> advicesCritical() {
         List<String> list = new ArrayList<>();
-        list.add("DANGER");
-        list.add("Stay seated and breathe slowly.");
-        list.add("Call a sober friend to stay with you.");
-        list.add("Drink water very slowly.");
-        list.add("Seek medical help, this level is dangerous.");
+        list.add("⭐ WHAT YOU SHOULD KNOW:");
+        list.add("This is a dangerous level: risk of alcohol poisoning.");
+        list.add("You may experience confusion, vomiting, or trouble standing.");
+
+        list.add("🟢 WHAT YOU SHOULD DO:");
+        list.add("Stop drinking immediately.");
+        list.add("Drink water slowly if you are conscious.");
+        list.add("Stay with someone — do not be alone.");
+        list.add("Sit or lie on your side to avoid choking if you vomit.");
+        list.add("Seek medical help if you feel very unwell or faint.");
+
+        list.add("❌ WHAT YOU SHOULD NOT DO:");
+        list.add("Do not drive.");
+        list.add("Do not walk alone.");
+        list.add("Do not continue drinking.");
+        list.add("Do not lie on your back if you vomit — choking risk.");
+        list.add("Do not mix alcohol with medications or drugs.");
+
         return list;
     }
 
-
-    private static String warning(double bac) {
-        if (bac < 0.6) return "";
-        if (bac < 1.2) return "Your reflexes are slowing down — avoid driving.";
-        if (bac < 2.0) return "High risk of falls and impaired judgment.";
-        if (bac < 3.0) return "Strong risk of alcohol poisoning — do not stay alone.";
-        return "⚠️ CRITICAL: Risk of coma. Call someone immediately.";
-    }
 
 
     public static String getAllAdvices(double bac) {

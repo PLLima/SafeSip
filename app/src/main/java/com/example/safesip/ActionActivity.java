@@ -34,7 +34,7 @@ public class ActionActivity extends AppCompatActivity {
         SharedPreferences dataBase = getSharedPreferences("history", Context.MODE_PRIVATE);
         String streak = dataBase.getString("strike", "0");
         StreakText = findViewById(R.id.StreakText);
-        StreakText.setText("You are on a " + streak + " days streak!");
+        StreakText.setText("You are on a " + streak + " days streak \uD83D\uDD25");
         TrackButton = findViewById(R.id.TrackButton);
         HistoryButton = findViewById(R.id.HistoryButton);
         StatisticsButton = findViewById(R.id.StatisticsButton);

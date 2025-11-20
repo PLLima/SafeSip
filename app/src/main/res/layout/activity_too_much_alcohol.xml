@@ -5,19 +5,22 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TooMuchAlcool">
+    android:background="#E8EEF5"
+    tools:context=".TooMuchAlcohol">
 
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
         android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="307dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#2F5090"
         android:onClick="onClickBack"
         android:text="Back"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ThankYouTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,11 +68,12 @@
         app:layout_constraintTop_toBottomOf="@+id/AlcoolQuantityTextView"
         app:layout_constraintVertical_bias="0.193" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="240dp"
+        android:backgroundTint="#2F5090"
         android:text="What should I do ?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
