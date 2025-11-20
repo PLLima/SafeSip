@@ -38,7 +38,7 @@ public class TooMuchAlcohol extends AppCompatActivity {
             alcoolByDayArray = alcoolByDay.split(",");
         }
         float alcoolQuantity = (float) (Float.parseFloat(alcoolByDayArray[alcoolByDayArray.length-1]) * 0.789);
-        tv.setText("You have drank " + Float.toString(alcoolQuantity) + "g of alcohol today");
+        tv.setText("You drank " + Float.toString(alcoolQuantity) + "g of alcohol today");
         // Centrer le texte DANS le TextView
         tv.setGravity(Gravity.CENTER);
         String timeString = dataBase.getString("times", "0,0");
