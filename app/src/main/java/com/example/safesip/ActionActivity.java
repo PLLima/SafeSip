@@ -38,6 +38,16 @@ public class ActionActivity extends AppCompatActivity {
         TrackButton = findViewById(R.id.TrackButton);
         HistoryButton = findViewById(R.id.HistoryButton);
         StatisticsButton = findViewById(R.id.StatisticsButton);
+
+        Button b4 = findViewById(R.id.button4);
+        b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActionActivity.this, MoreInfoActivity.class);
+                startActivity(intent);
+            }
+
+        });
     }
 
     public void handleClick(View view) {
