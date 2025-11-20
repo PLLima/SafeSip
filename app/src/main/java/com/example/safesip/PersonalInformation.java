@@ -81,7 +81,7 @@ public class PersonalInformation extends AppCompatActivity {
             return;
         }
         if (age < 16 || age > 99) {
-            editAge.setError("Age mus be between 16 and 99");
+            editAge.setError("Age must be between 16 and 99");
             editAge.requestFocus();
             return;
         }
@@ -104,7 +104,6 @@ public class PersonalInformation extends AppCompatActivity {
                 editWeight.setError("Weight must be between 40kg and 300kg");
                 editWeight.requestFocus();
                 return;
-
             }
 
             int selectedId = RadioGroupbutton.getCheckedRadioButtonId();
