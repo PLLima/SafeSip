@@ -1,4 +1,4 @@
-SafeSip: Android App to Help People Reduce Alcohol Consumption
+# SafeSip: Android App to Help People Reduce Alcohol Consumption
 
 **SafeSip** is an Android application designed to help individuals struggling with alcohol addiction track, control, and progressively reduce their drinking habits.  
 It provides a simple and effective way to monitor daily intake, receive alerts when limits are exceeded, and maintain a clear record of progress.
