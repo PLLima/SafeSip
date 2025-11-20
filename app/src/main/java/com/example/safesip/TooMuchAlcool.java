@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -41,6 +42,8 @@ public class TooMuchAlcool extends AppCompatActivity {
         }
         float alcoolQuantity = (float) (Float.parseFloat(alcoolByDayArray[alcoolByDayArray.length-1]) * 0.789);
         tv.setText("You have drank " + Float.toString(alcoolQuantity) + "g of alcohol today");
+        // Centrer le texte DANS le TextView
+        tv.setGravity(Gravity.CENTER);
         String timeString = dataBase.getString("times", "0");
         String alcoolString = dataBase.getString("alcool", "0");
         SharedPreferences personalDataBase = getSharedPreferences("personal-data", MODE_PRIVATE);
@@ -61,6 +64,7 @@ public class TooMuchAlcool extends AppCompatActivity {
         String bacFormatted = String.format("%.2f", percentageOfAlcoolInBlood);
         TextView tvPercentage = findViewById(R.id.PercentageTextView);
         tvPercentage.setText("Now, you have " + bacFormatted + " g/L in your blood");
+        tvPercentage.setGravity(Gravity.CENTER);
 
         Button b1 = findViewById(R.id.button2);
 

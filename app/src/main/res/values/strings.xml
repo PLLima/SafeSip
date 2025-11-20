@@ -1,19 +1,21 @@
 <resources>
-    <string name="app_name">
+    <string name="app_name" > SafeSip </string>
+    <string name="help_info">
     Need Help? You’re Not Alone \n\n
 
     If you’re worried about your drinking or feel unsafe right now, here are resources that can support you. Reaching out is a sign of strength.\n\n
 
-    🚨 Emergency (Immediate Danger)\n
-    • Call 112 (EU emergency number)\n
-    • Call 911 (US/Canada)\n\n
-
-    📞 Hotlines and Support (France)\n
+   📞 Hotlines and Support (France)\n
     • Alcool Info Service – 0 980 980 930\n
       Anonymous, 7 days a week, 8 AM to 2 AM\n
     • Suicide Crisis Line – 3114 (24/7)\n
     • SAMU – 15\n
     • European Emergency Number – 112\n\n
+
+    🚨 Emergency (Immediate Danger)\n
+    • Call 112 (EU emergency number)\n
+    • Call 911 (US/Canada)\n\n
+
 
     🌍 International Resources\n
     • Alcoholics Anonymous: www.aa.org\n

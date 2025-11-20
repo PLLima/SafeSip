@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#90EBD370"
     tools:context=".MoreInfoActivity">
 
     <TextView
@@ -15,7 +16,7 @@
         android:layout_marginBottom="20dp"
         android:lineSpacingExtra="8sp"
         android:padding="16dp"
-        android:text="@string/app_name"
+        android:text="@string/help_info"
         android:textSize="17dp"
         app:layout_constraintBottom_toTopOf="@+id/emergency"
         app:layout_constraintEnd_toEndOf="parent"
