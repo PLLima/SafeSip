@@ -31,6 +31,10 @@ It provides a simple and effective way to monitor daily intake, receive alerts w
 - **SharedPreferences** for persistent local storage
 - **BroadcastReceiver** for automatic midnight updates
 
+## Demonstration Video
+
+![](vid/SafeSipAppDemo.mp4)
+
 ## Screenshots
 ![welcome page](img/01-Welcome.png)
 
