@@ -5,6 +5,9 @@ It provides a simple and effective way to monitor daily intake, receive alerts w
 
 ---
 
+## Demonstration Video
+https://github.com/user-attachments/assets/8067ad93-4cb4-4ae3-95b1-cf46b7dd5a77
+
 ## Features
 
 ### Easy Drink Logging
@@ -31,9 +34,22 @@ It provides a simple and effective way to monitor daily intake, receive alerts w
 - **SharedPreferences** for persistent local storage
 - **BroadcastReceiver** for automatic midnight updates
 
-## Demonstration Video
+## Social Purpose
 
-![](vid/SafeSipAppDemo.mp4)
+The SafeSip app was created to support individuals aiming to:
+
+- Track drinking habits
+
+- Build healthier routines
+
+- Reduce daily alcohol intake
+
+- Avoid binge drinking
+
+- Stay aware of their real consumption levels
+
+No account or external tracking is required.
+All data stays private on the device.
 
 ## Screenshots
 ![welcome page](img/01-Welcome.png)
@@ -57,23 +73,6 @@ It provides a simple and effective way to monitor daily intake, receive alerts w
 ![advice page](img/10-Advice.png)
 
 ![daily notification](img/11-Notification.png)
-
-## Social Purpose
-
-The SafeSip app was created to support individuals aiming to:
-
-- Track drinking habits
-
-- Build healthier routines
-
-- Reduce daily alcohol intake
-
-- Avoid binge drinking
-
-- Stay aware of their real consumption levels
-
-No account or external tracking is required.
-All data stays private on the device.
 
 ## Authors
 
