@@ -154,6 +154,8 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = dataBase.edit();
             editor.putString("strike", Integer.toString(newStreak));
             editor.putString("day", Integer.toString(todayDay));
+            editor.putString("alcool", "");
+            editor.putString("times", "");
             editor.putString("month", Integer.toString(todayMonth));
             editor.putString("year", Integer.toString(todayYear));
             editor.putString("alcoolByDay", alcoolByDay);
